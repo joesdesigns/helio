@@ -1,0 +1,9 @@
+<div class="content-tabs">
+  <ul>
+    <% if @branded_config[:orders][:orders] %>
+      <li class="<%= active_tab('index') %>purchases-tab"><a href="<%= transactions_path %>"><%= t('transactions.sub_title_purchases')%></a></li>
+      <li class="<%= active_tab('refunds') %>refunded-tab"><a href="<%= refunds_path %>"><%= t('transactions.sub_title_refunded')%></a></li>
+      <li style="display: none;" class="bulk-purchases-tab"><a href="#bulk-purchases"><%= t('transactions.sub_title_bulk)%></a></li>
+    <% end %>
+  </ul>
+</div>

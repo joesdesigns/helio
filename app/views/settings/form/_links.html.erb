@@ -1,0 +1,33 @@
+<section id="content-box1">
+  <%= form_tag url_for(:controller => 'user', 
+  :action => 'update_bookshelf_preference'), :method => 'PUT' , remote: true do %>
+  
+  <h2 class="head-instructions"><%= t('devices.links.title') %></h2>
+  <div class="instructions"><%= t('devices.links.sub_title') %></div>
+  <% if @details["user"]["bookshelf_preference"] == 'Desktop'%>
+  <div class="field-algn">
+   <%= radio_button_tag '[user][bookshelf_preference]', 'Desktop', "checked = true" %>
+    <%= label_tag "bookshelf_preference_desktop", t('devices.links.options.desktop'),  id: 'deskttop', class: 'small_label' %>
+  </div>
+  <div class="field-algn">
+    <%= radio_button_tag '[user][bookshelf_preference]', 'Online'%>
+    <%= label_tag "bookshelf_preference_online", t('devices.links.options.online'),  id: 'online', class: 'small_label' %>
+  </div>
+<% else %>
+  <div class="field-algn">
+   <%= radio_button_tag '[user][bookshelf_preference]', 'Desktop'%>
+    <%= label_tag "bookshelf_preference_desktop", t('devices.links.options.desktop'),  id: 'deskttop', class: 'small_label' %>
+  </div>
+  <div class="field-algn">
+    <%= radio_button_tag '[user][bookshelf_preference]', 'Online', 'checked = true'%>
+    <%= label_tag "bookshelf_preference_online", t('devices.links.options.online'),  id: 'online', class: 'small_label' %>
+  </div>
+
+
+<% end %>
+
+  <div class="field-algn">
+    	<%= submit_tag t('buttons.save'), :type => "submit" %>
+    </div>
+    <% end %>
+</section>

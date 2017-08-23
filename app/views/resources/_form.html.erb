@@ -1,0 +1,82 @@
+<style>
+
+.content {
+  padding: 50px 50px 0 50px;
+}
+
+@media screen and (max-width: 900px) {
+  .content {
+    padding-left: 15px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .content {
+    padding: 0 5px !important;
+  }
+}
+@media screen and (max-width: 645px) {
+  .content {
+    /*padding-left: 0 !important;*/
+  }
+}
+@media screen and (max-width: 525px) {
+  .content {
+    /*padding-left: 0 !important;*/
+    width: 100%;
+  }
+}
+
+</style>
+
+ <div class="page-header">
+  <div class="form-header">
+    <h1 class="form-header-heading main"><%= t('content.page_title')%></h1>
+  </div>
+  </div>
+
+<%= render 'resources/cards/pod' %>
+  <section id="content-box1"><h2 class="head-instructions"><%= t('content.resources.title')%></h2>
+  <div class="instructions"><%= t('content.resources.sub_title')%></div>
+
+<%if  @licenses.any? %>
+
+  <div class="orders">
+
+    <% @licenses.each do |x| %>
+        <% book = x.book %>
+        <div class="order-details">
+          <%= image_tag("//covers.vitalbook.com/vbid/#{book.isbn}/width/120", :alt => "", :class => "book_image", :width => "90", :height => "109") %>
+          <div class="book-description">
+            <div class="book-title"><%= book.title %></div>
+            <div class="book-details">
+              <% if !book.author.blank? %>
+                by <%= book.author %><br>
+              <% end %>
+<<<<<<< HEAD
+                ISBN: <%= book.isbn %>
+=======
+                <%= t('content.resources.isbn')%>: <%= x[:isbn] %>
+>>>>>>> hotfix/ACCT-443-Localizations
+            </div>
+            <div class="resources">
+        <% if x.ancillaries.count == 1%>
+          <%= x.ancillaries.count %> <%= t('content.resources.display')%>
+        <% else %>
+          <%= x.ancillaries.count %> <%= t('content.resources.displayed')%>
+        <% end %>
+        </div>
+          </div>
+          <div class="arrow-container">
+            <div class="order-details-continue">
+            <%= link_to image_tag(asset_path("forward_arrow.png"), :alt => "Select to view resources", :class => "forward-arrow", :width => "14", :height => "20" ), 'javascript:void(0);', :onclick =>
+              "show_resources('#{book.isbn}')" %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <% else %>
+  <br>
+  <%= t('content.resources.null_state') %>
+  <% end %>
+  <%= render 'shared/footer' if design_branding[:show_footer]%>

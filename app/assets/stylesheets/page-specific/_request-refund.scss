@@ -1,0 +1,36 @@
+@import 'colors';
+
+.request-refund-container {
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+  .request-refund {
+    padding: 45px 90px 0 90px;
+    h2 {
+    }
+    .return-policy {
+      padding: 60px 10px 100px 10px;
+      font-weight: 300;
+    }
+    .field-algn {
+      textarea {
+        width: 50%;
+        min-width: 200px;
+      }
+    }
+    .refund-buttons {
+      input[type="submit"] {
+        background: #f58929;
+      }
+    }
+    .request-refund-itembox {
+      width: 100%;
+      .order-item {
+        .book_image {
+          padding: 0 5px 0 0;
+        }
+      }
+    }
+  }
+}

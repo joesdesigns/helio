@@ -1,0 +1,43 @@
+<div class="page-header">
+	<h1 class="form-header-heading"><%= t('content.page_title')%></h1>
+</div>
+<div class="return_to_content_section">
+  <a class="return_to_content" href="<%= resources_path %>"><%= @license.book.title %></a>
+</div>
+<section id="content-box1">
+  <div>
+    <div id="resources_displayed" class="instructions ctr"></div>
+      <% if @license.ancillaries.not_eresource.any? %>
+        <table class="resources-list-table">
+  		    <thead>
+   			    <tr>
+    		      <th colspan="5"><h3 class="h3-resources-list"><%= t('content.resources.ancillaries.ancillaries')%></h3></th>
+   			    </tr>
+   	      </thead>
+   	      <tbody>
+    		    <% @license.ancillaries.not_eresource.each do |a| %>
+      		    <% if a.ancillary_type == 'url' %>
+               <tr>
+                <td nowrap><%= link_to a.href, a.href, target: '_blank' %></td>
+                <td><%= a.file_type %></td>
+                <td>--------</td>
+                <td>--------</td>
+              </tr>  
+              <% else %>
+              <tr>
+                <td nowrap><%= a.title%></td>
+                <td><%= a.file_type %></td>
+                <td><%=number_to_human_size(a.size)%></td>
+                <td><%= link_to t('content.resources.ancillaries.download'), a.href %>
+                  </td>
+              </tr>
+              <% end %>
+     	      <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <% if @license.ancillaries.eresource.count > 0  %>
+      <%= render 'resource_details_eresources' %>
+    <% end %>
+  </section>

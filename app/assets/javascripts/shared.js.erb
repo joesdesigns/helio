@@ -1,0 +1,335 @@
+<% urls = Rails.application.routes.url_helpers %>
+
+
+$(function() {
+  $("#notification-form").on("submit", function(event) {
+    event.preventDefault();
+    var data;
+    if ($("#notification-option").is(':checked')) {
+      data = {promote_option: true, survey_option: true};
+    } else {
+      data = {promote_option: false, survey_option: false};
+    }
+    $.ajax({
+      url: '<%= urls.user_update_notifications_path %>',
+      type: 'PUT',
+      data: {user: data},
+      dataType: 'text',
+      error: function(err) {statusMessage(false, err.responseText);},
+      success: function(messageText) {statusMessage(true, messageText);}
+    })
+  });
+
+  $("#request_refund_form").on("submit", function(event) {
+    var counted = $('input.survey:checked').length;
+    if (counted == 0) {
+      showMessage("fail","You must select at least one reason for the refund.");
+      event.preventDefault();
+    } else {
+      $("#results_div").hide();
+    }
+  });
+
+  // Transactions tab events
+  // $('.purchases-tab').on('click' , function(event) {
+  //   $(this).addClass('selected');
+  //   $('.refunded-tab, .bulk-purchases-tab').removeClass('selected');
+  //   $('#transactions').addClass('purchases').removeClass('bulk_purchases refunds').show();
+  //   $('#transactions.refunds, #transactions.bulk_purchases').hide();
+  //   $('.refunds-text').hide();
+  // });
+
+  // $('.refunded-tab').on('click' , function(event) {
+  //   $(this).addClass('selected');
+  //   $('.purchases-tab, .bulk-purchases-tab').removeClass('selected');
+  //   $('#transactions').addClass('refunds').removeClass('bulk_purchases purchases').show();
+  //   $('.refunds-text').show();
+  //   $('#transactions.purchases, #transactions.bulk_purchases').hide();
+  // });
+
+  // $('.bulk-purchases-tab').on('click' , function(event) {
+  //   $(this).addClass('selected');
+  //   $('.purchases-tab, .refunded-tab').removeClass('selected');
+  //   $('#transactions').addClass('bulk_purchases').removeClass('refunds purchases').show();
+  //   $('#transactions.purchases, #transactions.refunds').hide();
+  //   $('.refunds-text').hide();
+  // });
+
+  $("#details_other").on("focus", function(event) {
+    $('#other_please_explain').prop('checked', true);
+  });
+
+  $("#email_locked_learn_more").on("click", function(event) {
+    $("#locked_email_modal").dialog({
+      dialogClass: 'no-close success-dialog modal-corners',
+      modal: true,
+      draggable: false,
+      resizable : true,
+      minHeight: 250,
+      width: 520,
+      open: function() {
+        $('#locked_email_modal').focus();
+        $('#locked_email_modal').removeClass('hidden');
+        $("#locked_email_modal").siblings(".ui-dialog-titlebar").hide() ;
+        // $('.ui-widget-overlay').addClass('custom-overlay');
+      },
+      close: function() {
+        //$('.ui-widget-overlay').removeClass('custom-overlay');
+      }
+    });
+  });
+  $("#user_locked_email_modal_close").on("click", function(event) {
+    close_modal('#locked_email_modal');
+  });
+
+  $(".deactivate_modal_form").on('ajax:success', function(event, data, status, xhr) {
+    window.location.reload(); // super ugly but just make it work for now
+     // regenerate the device list or at least hide the element deleted
+  });
+
+  // Menus
+
+  $("#close-moble-menu").on("click", function(event) {
+    $('.main-menu').removeClass('menu-close-hidden');
+    $('.main-menu').addClass('menu-open');
+    $(".main-menu").attr("aria-hidden","true");
+  });
+
+  $(".menu-icon").on("click", function(event) {
+    $('.main-menu').removeClass('menu-close-hidden');
+    $('.main-menu').addClass('menu-open');
+    $('#close-moble-menu').focus();
+    $(".main-menu").attr("aria-hidden","false");
+     event.stopPropagation();
+  });
+
+  $(document).click( function(){
+    $('.main-menu').addClass('menu-close-hidden');
+    $('.main-menu').removeClass('menu-open');
+    $(".main-menu").attr("aria-hidden","true");
+  });
+
+  $("#user-content-menu-button").on("click", function() {
+    $("#user-dropdown-menu-1").toggleClass("hidden-menu");
+    $(this).toggleClass("selected-item");
+  });
+
+  $("#user-content-menu-button").on("blur", function() {
+    $("#user-dropdown-menu-1").addClass("hidden-menu");
+    $(this).toggleClass("selected-item");
+  });
+
+  $(".show_not_refundable_modal").on("click", function(event) {
+    $("#not_refundable_modal").dialog({
+      dialogClass: 'no-close success-dialog modal-corners',
+      modal: true,
+      draggable: false,
+      resizable : true,
+      minHeight: 250,
+      width: 520,
+      open: function() {
+        $('#not_refundable_modal').focus();
+        $('#not_refundable_modal').removeClass('hidden');
+        $("#not_refundable_modal").siblings(".ui-dialog-titlebar").hide() ;
+        // $('.ui-widget-overlay').addClass('custom-overlay');
+      },
+      close: function() {
+        //$('.ui-widget-overlay').removeClass('custom-overlay');
+      }
+    });
+  });
+  $("#not_refundable_modal_close").on("click", function(event) {
+    close_modal('#not_refundable_modal');
+  });
+
+  // User Password
+
+  $("#user_change_password").click(function () {
+    $('#password-error').addClass("hidden");
+    $('#password-error').html("");
+    $("#user_password_modal").dialog({
+      dialogClass: 'no-close success-dialog modal-corners',
+      modal: true,
+      draggable: false,
+      resizable : true,
+      minHeight: 350,
+      width: 'auto',
+      open: function() {
+        //$("#security_dialog #_user_question_response").val("the other option");
+           //$('.ui-widget-overlay').removeClass('custom-overlay');
+        $('#user_password_modal').focus();
+        $('#user_password_modal').removeClass('hidden');
+        $("#user_password_modal").siblings(".ui-dialog-titlebar").hide() ;
+        // $('.ui-widget-overlay').addClass('custom-overlay');
+      },
+      close: function() {
+        //$('.ui-widget-overlay').removeClass('custom-overlay');
+      }
+    });
+  });
+
+  $("#user_locked_email").click(function () {
+    $('#password-error').addClass("hidden");
+    $('#password-error').html("");
+    $("#user_password_modal").dialog({
+      dialogClass: 'no-close success-dialog modal-corners',
+      modal: true,
+      draggable: false,
+      resizable : true,
+      minHeight: 350,
+      width: 'auto',
+      open: function() {
+        //$("#security_dialog #_user_question_response").val("the other option");
+           //$('.ui-widget-overlay').removeClass('custom-overlay');
+        $('#user_password_modal').focus();
+        $('#user_password_modal').removeClass('hidden');
+        $("#user_password_modal").siblings(".ui-dialog-titlebar").hide() ;
+        // $('.ui-widget-overlay').addClass('custom-overlay');
+      },
+      close: function() {
+        //$('.ui-widget-overlay').removeClass('custom-overlay');
+      }
+    });
+  });
+
+// User Security
+
+  $("#user_edit_security").click(function () {
+    $("#user_security_modal").dialog({
+      dialogClass: 'no-close success-dialog modal-corners',
+      modal: true,
+      draggable: false,
+      resizable : true,
+      minHeight: 350,
+      width: 'auto',
+      open: function() {
+        //$("#security_dialog #_user_question_response").val("the other option");
+        $('#user_security_modal').removeClass('hidden');
+        $('#user_security_modal').focus();
+        $("#user_security_modal").siblings(".ui-dialog-titlebar").hide() ;
+        // $('.ui-widget-overlay').addClass('custom-overlay');
+      },
+      close: function() {
+        //$('.ui-widget-overlay').removeClass('custom-overlay');
+      }
+    });
+  });
+
+// User State
+
+  $("#_user_school_state").on("change", function(e) {
+    var selected_state = this.options[e.target.selectedIndex].value;
+    $.ajax({
+      url:  '/institutions',
+      type: 'GET',
+      data: {'selected_state': selected_state},
+      dataType: 'json',
+      success:
+        function (response){
+          $('#_user_school').removeAttr('disabled');
+          $('#_user_school').empty();
+          response.forEach(function (val, index, theArray) {
+            var newOption = $('<option value="'+val+'">'+val+'</option>');
+            $('#_user_school').append(newOption);
+          });
+        },
+      error:
+        function(xhr, status, error) {
+        }
+      });
+    });
+  });
+
+// Deactivate
+
+function deactivate_device(id){
+  $("#deactivate_modal" ).dialog({
+    dialogClass: 'no-close success-dialog',
+    modal: true,
+    draggable: false,
+    resizable : true,
+    minHeight: 220,
+    width: 'auto',
+    open: function() {
+      $("#deactivate_modal #deactivation_id").val(id);
+      $('#confirmed').focus();
+      $('#deactivate_modal').removeClass('hidden');
+      $("#deactivate_modal").siblings(".ui-dialog-titlebar").hide() ;
+    },
+    close: function() {
+    }
+  });
+  event.preventDefault(); // Prevent link from following its href
+}
+
+// show just the banner without changing the message
+function showStatusBanner(type) {
+ if (type.toLowerCase()=="fail") {
+    $('#results_div').removeClass("page-success-message")
+                 .addClass("page-error-message")
+                 .show()
+                 .focus();
+  } else {
+    $('#results_div').removeClass("page-error-message")
+                 .addClass("page-success-message")
+                 .show()
+                 .focus();
+  }
+  setTimeout(function(){$("#results_div").hide();}, 5000);
+}
+
+
+function showMessage(type,message) {
+  if (type.toLowerCase()=="fail") {
+    $('#results_div').html(message)
+                 .removeClass("page-success-message")
+                 .addClass("page-error-message")
+                 .show()
+                 .focus();
+  } else {
+    $('#results_div').html(message)
+                 .removeClass("page-error-message")
+                 .addClass("page-success-message")
+                 .show()
+                 .focus();
+  }
+  setTimeout(function(){$("#results_div").hide();}, 5000);
+}
+
+function close_modal(id){
+  $(id).dialog("close");
+ }
+
+function show_resources(isbn){
+   window.location = "resources/"+ isbn;
+}
+
+function close_request_refund() {
+  window.location = "<%= urls.purchases_path %>";
+}
+
+
+function statusMessage(success, message) {
+  $('#results_div').html(message).css({'background-color': success == true ? '#007FAD' : '#f54250', 'z-index' : '9999', 'margin-top' : '44px'}).show().focus();
+  setContainerTopMobile('0px');
+  setTimeout( function(){
+    $('#results_div').hide();
+    setContainerTopMobile('44px');
+  }, 5000);
+}
+
+function reveal_eresource(isbn) {
+   $.ajax({
+      url:  '/resources/redeem_eresource/'+isbn,
+      type: 'GET',
+      dataType: 'json',
+      success:
+        function (response){
+          $('#revealed_code').text(response['code']);
+        },
+      error:
+        function(xhr, status, error) {
+        }
+      });
+   window.location.reload();
+}

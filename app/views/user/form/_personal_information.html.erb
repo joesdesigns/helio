@@ -1,0 +1,26 @@
+<section id="content-box1"><h2><%= t('user.personal.title') %></h2>
+  <%= form_tag url_for(:controller => 'user', :action => 'update'), :method => 'PUT' , remote: true do %>
+     <div class="field-algn">
+     <%= user_presenter.email_label %>
+     <%= user_presenter.email_field %>
+     </div>
+    <div class="field-algn">
+      <%= label_tag '[user][first_name]', t('user.personal.first_name') %>
+      <%= text_field_tag "[user][first_name]",
+      @user.first_name , class: 'textfields', "aria-required" => true %>
+      <div id = "first_name-error" class="field-error hidden"></div>
+    </div>
+    <div class="field-algn">
+      <%= label_tag '[user][last_name]', t('user.personal.last_name') %>
+      <%= text_field_tag "[user][last_name]", @user.last_name, class: 'textfields', "aria-required" => true %>
+      <div id = "last_name-error" class="field-error hidden"></div>
+    </div>
+   <!--  <div class="field-short">
+      <%= label_tag '[user][locale]', t('user.personal.default_lang') %>
+      <%= select_tag "[user][locale]", options_for_select(I18n.available_locales.map {|locale| [I18n.t('language', locale: locale), locale.to_s] },@user.locale) %>
+    </div> -->
+    <div class="field-algn personal-info-save">
+      <%= submit_tag t('buttons.save'), :type => "submit" %>
+    </div>
+      <% end %>
+  </section>

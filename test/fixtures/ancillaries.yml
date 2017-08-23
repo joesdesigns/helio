@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  license_id: 1
+  ancillary_type: MyString
+  platform: MyString
+  size: MyString
+  title: MyString
+  href: MyString
+  access_code: MyString
+  revealed: 1
+  login_url: MyString
+
+two:
+  license_id: 1
+  ancillary_type: MyString
+  platform: MyString
+  size: MyString
+  title: MyString
+  href: MyString
+  access_code: MyString
+  revealed: 1
+  login_url: MyString

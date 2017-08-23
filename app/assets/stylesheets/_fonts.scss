@@ -1,0 +1,176 @@
+@import 'colors';
+// https://google-webfonts-helper.herokuapp.com/fonts/roboto?subsets=latin
+
+/* roboto-100 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: url(asset-path('roboto-v15-latin-100.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-100.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-300 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(asset-path('roboto-v15-latin-300.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-300.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-300italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  src: url(asset-path('roboto-v15-latin-300italic.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-300italic.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(asset-path('roboto-v15-latin-regular.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-regular.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-500 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(asset-path('roboto-v15-latin-500.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-500.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(asset-path('roboto-v15-latin-700.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-700.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-900 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: url(asset-path('roboto-v15-latin-900.woff2')) format('woff2'), /* Chrome 26+, Opera 23+ */
+       url(asset-path('roboto-v15-latin-900.woff')) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto";
+  font-size:16px;
+  height: 100%;
+}
+
+
+body {
+  font-family: "Roboto", Helvetica, Arial;
+  background-color: $lighterghost;
+  color: $darkninja;
+  margin: 0;
+  font-size: 100%;
+  height: 100%;
+}
+
+h1 {
+  color: $darkninja;
+  font-weight: normal;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+h2 {
+  color: $lightcheddar;
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-bottom: .5rem;
+}
+
+h3 {
+  font-size: .875rem;
+  margin-bottom: 10px;
+}
+p {
+	font-size: 1rem;
+	margin: 0 0 0.5em 0;
+}
+.head-instructions {
+	margin-bottom: 0.125rem !important;
+}
+.account-type {
+  color: $elephant;
+  font-size: 1rem;
+  padding-left: 0.625em;
+}
+
+.form-instructions {
+  font-size: .875rem;
+  color: $elephant;
+  font-weight: lighter;
+  padding-left: 0.625em;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.instructions {
+  color: $elephant;
+  font-weight: lighter;
+
+  & + fieldset {
+    margin-top: 1em;
+  }
+
+  & + .field-algn {
+    margin-top: 1em;
+  }
+}
+
+.book-title {
+  font-size: 1rem;
+  color: $slate;
+  font-weight: 400;
+}
+
+.book-details {
+  font-size: .875rem;
+  color: $slate;
+  font-weight: lighter;
+}
+
+.resources {
+    font-size: .875rem;
+    color: $slate;
+}
+
+.deactivate {
+  font-weight: normal;
+}
+.bold {
+	font-weight: bold;
+}
+.forms_text {
+  font-size: 1rem;
+  color: $elephant;
+  font-weight: lighter;
+  margin: -5px 0px 15px 0px;
+}
+@media (max-width: 800px) {
+	.book-title {
+		font-size: 1rem;
+	}
+	.form-instructions {
+		padding-left: 0;
+	}
+	.account-type {
+  		padding-left: 0;
+	}
+}

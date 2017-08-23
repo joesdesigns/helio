@@ -1,0 +1,22 @@
+<% if @user.errors.any? %>
+  var message = "Please correct errors before submitting.";
+  $('#results_div').html(message);
+  $('#results_div').css('background-color', '#f54250');
+  $('#results_div').show();
+  $('#results_div').focus();
+  setTimeout(function(){
+    $('#results_div').hide();
+  }, 5000)
+<% else %>
+  $('#results_div').css('background-color', '#007FAD');
+  $('#results_div').html("Update Successful.");
+  $('#results_div').show();
+  $('#results_div').focus();
+  setTimeout(function(){
+    $('#results_div').hide();
+  }, 5000)
+// it seems the modal resets strangely if you hit cancel after
+// an update, this fixes it but don't like it.
+
+  // window.location.reload();
+<% end %>

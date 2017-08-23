@@ -1,0 +1,57 @@
+function reset_field(name){
+  $('#'+name+'-error').removeClass("field-error")
+  $('#'+name+'-error').addClass("hidden")
+  $('#_user_'+name).removeClass("error")
+}
+
+function set_error(name,flag){
+  $('#'+name+'-error').addClass("field-error")
+  $('#'+name+'-error').removeClass("hidden")
+  $('#_user_'+name).addClass("error")
+  $('#'+name+'-error').html(flag);
+}
+
+reset_field('first_name');
+reset_field('last_name');
+reset_field('email');
+
+<% if current_user.errors.any? %>
+  var message = "Please correct errors before submitting.";
+   <% if current_user.errors[:first_name].any? %>
+    set_error('first_name','Required');
+  <% end %>
+
+  <% if current_user.errors[:last_name].any? %>
+    set_error('last_name','Required');
+  <% end %>
+
+  <% if current_user.errors[:email].any? %>
+    <% if current_user.errors[:email][0].to_s == 'has already been taken' %>
+      set_error('email',"<%= t('messages.email_taken') %>");
+    <% else %>
+      set_error('email',"<%= t('messages.required') %>");
+    <% end %>
+  <% end %>
+  $('#results_div').html(message).css({'background-color': '#f54250', 'z-index' : '9999', 'margin-top' : '44px'}).show().focus();
+  if ($(window).width() <= 800) {
+    $('.content-container').css({'top': '0'});
+  }
+  setTimeout( function(){
+    $('#results_div').hide();
+    if ($(window).width() <= 800) {
+      $('.content-container').css({'top': '44px'});
+    }
+  }, 5000)
+<% else %>
+  $('#results_div').show().css({'background-color': '#007FAD', 'z-index' : '9999', 'margin-top' : '44px'}).html("Update Successful.").focus();
+  if ($(window).width() <= 800) {
+    $('.content-container').css({'top': '0'});
+  }
+  setTimeout( function(){
+    $('#results_div').hide(); location.reload();
+    if ($(window).width() <= 800) {
+      $('.content-container').css({'top': '44px'});
+    }
+  }, 5000)
+  $('#header.name').html("<%= current_user.first_name %>" + "&nbsp;" + "<%= current_user.last_name %>");
+<% end %>

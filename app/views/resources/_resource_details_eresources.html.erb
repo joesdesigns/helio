@@ -1,0 +1,13 @@
+    <div>
+      <div class="resources-list-headsection">
+        <h3 class="h3-resources-list"><%= t('content.resources.eresources.title')%></h3>
+      </div>
+      <p><%= t('content.resources.eresources.sub_title').html_safe%>
+      <% @license.ancillaries.eresource.each do |e| %>
+        <% if e.revealed? %>
+          <div id="revealed_code"><%= e.access_code %></div>
+        <% else %>
+          <button id="reveal_code" onclick="reveal_eresource(<%= @license.book.isbn %>)" class="button_secondary" type="button"><%= t('buttons.reveal_code')%></butotn>
+        <% end %>
+      <% end %>
+    </div>

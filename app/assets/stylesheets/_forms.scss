@@ -1,0 +1,257 @@
+@import 'colors';
+/*header css*/
+.form-header {
+
+  overflow: hidden;
+  height: 2.8em;
+  display: block;
+  clear: both;
+
+  h1 {
+    float: left;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2.5;
+    vertical-align: bottom;
+	font-weight: 400;
+  }
+
+  input {
+    float: right;
+    vertical-align: bottom;
+
+    &:not(first-of-type) {
+      margin-left: 10px;
+    }
+  }
+}
+.fl-text {
+	float: left;
+}
+.fr-button {
+	float: right;
+}
+.field-short {
+    /*float: left;*/
+    display: inline-block;
+    clear: none;
+	padding: 0 0.625em;
+	width: 310px;
+  }
+.field-algn {
+	padding: 0.4em 0.625em 0.25em;
+  }
+fieldset {
+  border: none;
+  clear: both;
+  padding: 0.4em 0.625em 0.25em;
+
+  fieldset {
+    padding-left: 0;
+  }
+
+  &.short {
+    float: left;
+    display: inline-block;
+    clear: none;
+  }
+}
+
+label {
+  display: block;
+  font-size: .875rem;
+  color: $darkstorm;
+  font-weight: lighter;
+  margin-bottom: 6px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  font-size: .875rem;
+  color: $black;
+  font-family: "Roboto";
+  border: 2px solid $ghost;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  width: 100%;
+  display: inline-block;
+  -webkit-appearance: none;
+
+  &.short {
+    width: 275px;
+  }
+  &:focus {
+	  outline: 0;
+    border: $lightocean solid 2px;
+  }
+  &::-webkit-input-placeholder {
+    color: $darkstorm;
+	opacity:  1;
+  }
+  &:-moz-placeholder {
+     color: $darkstorm;
+     opacity:  1;
+  }
+  &::-moz-placeholder {
+     color: $darkstorm;
+     opacity:  1;
+  }
+  &:-ms-input-placeholder {
+     color: $darkstorm;
+	 opacity:  1;
+  }
+  &.error {
+    border: 2px solid $pomegranate;
+  }
+}
+
+select {
+  font-size: .875rem;
+  background: url(asset-path('security-question.png')) no-repeat 97% center;
+  width: 100%;
+  margin: 0 0 10px 0;
+  border: #d9d9e7 solid 2px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 5px 0 5px 10px;
+
+  &:focus {
+	outline: 0;
+    border: $lightocean solid 2px;
+  }
+  &.short {
+    width: 290px;
+  }
+}
+input[type="radio"] {
+	display: inline-block;
+
+  & + label {
+    display: inline;
+  }
+}
+input[type="checkbox"] {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+
+  & + label {
+    display: inline;
+  }
+}
+.passwords_matching {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 1200px;
+  height: 1557px;
+  z-index: 295;
+}
+
+.page-error-message {
+  font-size: .875rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2.5;
+  vertical-align: middle;
+  width: 100%;
+  color: #ffffff;
+  background-color: $pomegranate;
+}
+
+.page-success-message {
+  font-size: .875rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2.5;
+  vertical-align: middle;
+  width: 100%;
+  color: #ffffff;
+  background-color: $ocean;
+}
+
+.field-error {
+  position: absolute;
+  display: inline-block;
+  overflow: visible;
+  background-color: $pomegranate;
+  color: #ffffff;
+  display: inline;
+  font-size: .875rem;
+  border-radius: 4px;
+  padding: .4em 1em;
+  margin-left: 1em;
+  font-weight: bold;
+
+  &::before {
+    content: "";
+    border-color: transparent $pomegranate;
+    border-style: solid;
+    border-width: 4px 6px 4px 0px;
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    left: -5px;
+    top: 12px;
+    }
+}
+@media (max-width: 800px) {
+	.form-header {
+		background-color: $ghost;
+		/*padding: 0 1em 1em 1em;*/
+		text-align: center;
+		margin: 0 -5px;
+		height: auto;
+
+		input {
+			float: none;
+		}
+	}
+	.form-header-heading {
+		/*accessibility - h1 hidden text*/
+		position: absolute;
+   		width: 1px;
+    	height: 1px;
+    	padding: 0;
+    	margin: -1px;
+    	overflow: hidden;
+    	clip: rect(0,0,0,0);
+    	border: 0;
+	}
+	select {
+		width: 100%;
+	}
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] {
+		width: 100%;
+	}
+	.field-error {
+		position: static;
+		margin-left: 0;
+		display: block;
+	}
+}
+@media (max-width: 480px) {
+	.form-header {
+		/*padding-bottom: 0.625em;*/
+	}
+	.field-algn {
+		padding-left: 0;
+		padding-right: 0;
+ 	 }
+	.field-short {
+		padding: 0;
+		width: 100%;
+  }
+  .fl-text {
+	float: none;
+  }
+  .fr-button {
+	float: none;
+  }
+}

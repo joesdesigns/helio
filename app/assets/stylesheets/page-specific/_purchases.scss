@@ -1,0 +1,382 @@
+@import 'colors';
+
+/*.purchases {
+  padding-top: 25px;
+}*/
+
+.page-header {
+ display: table;
+ width: 100%;
+}
+
+h1.form-header-heading {
+  padding: 0 0 0 15px;
+  display: table-cell;
+  margin: 0;
+  background: url(asset-path('arrow_left.svg')) left center no-repeat;
+  a {
+    font-size: 24px;
+    line-height: 2.5;
+    font-weight: 400;
+    color: $darkninja;
+  }
+}
+
+h1.form-header-heading.main {
+   padding: 0;
+   display: table-cell;
+   margin: 0;
+   background: none;
+ }
+
+.purchase-details-container {
+    border: 1px $cloud solid;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.06);
+    background: $white;
+    padding: 30px;
+    margin: 10px 0 0 0;
+}
+
+.vat-included {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.purchase-details {
+  width: 100%;
+  display: table;
+  border-bottom: 1px $cloud solid;
+  padding: 0 0 15px 0;
+  font-size: 14px;
+  /*padding: 11px 14px;
+  height: 62px;
+  clear: both;
+  overflow: auto;
+  background-color: $lightestghost;*/
+  position: relative;
+  .details-left-container {
+    display: table-cell;
+    vertical-align: top;
+    line-height: 1.8;
+  }
+  .details-right-container {
+    display: table-cell;
+    float: right;
+    line-height: 1.8;
+    min-width: 150px;
+    .detail_label {
+      span {
+        float: right;
+      }
+    }
+    .total-label {
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+}
+.print-reciept {
+  float: right;
+  display: table-cell;
+  color: $ocean;
+  font-size: 14px;
+  font-weight: 700;
+}
+.detail {
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
+  span {
+    /*padding-right: 25px;*/
+    display: inline-block;
+  }
+   &:first-child {
+    /*font-weight: 700;*/
+    width: 100px;
+    min-width: 20%;
+    max-width: 20%;
+  }
+  &:nth-child(1) {
+  }
+  &:nth-child(2) {
+    max-width: 20%;
+    min-width: 20%;
+    width: 160px;
+    /*width: 26%;*/
+    span {
+      /*padding-right: 14px;*/
+    }
+  }
+  &:nth-child(3) {
+    /*max-width: 115px;
+    min-width: 20%;
+    width: 20%;*/
+    max-width: 20%;
+    min-width: 20%;
+    width: 125px;
+  }
+  &:nth-child(4) {
+    /*max-width: 120px;
+    min-width: 21%;
+    width: 21%;*/
+    max-width: 20%;
+    min-width: 20%;
+    width: 120px;
+  }
+  &:last-child {
+    margin-right: 0px;
+    padding-right: 0;
+    max-width: 20%;
+    min-width: 20%;
+    width: 100px;
+  }
+}
+.redeem-code {
+  width: 65%;
+  color: #4f4f5f;
+  float: left;
+  font-size: 0.875em;
+  padding-left: 1.5625em;
+
+  span {
+    font-weight: bold;
+  }
+ }
+.order-item {
+  display: table;
+  padding: 20px 0;
+  font-size: 14px;
+  vertical-align: top;
+  /*border-top: 1px solid $lightghost;*/
+  width: 100%;
+
+  .order-item-left {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 25px 0 0;
+    .book-image-contianer {
+      float: left;
+      padding: 0 0 15px 0;
+    }
+  }
+
+  &:first-child {
+      /*border-top: none;*/
+      padding: 30px 0 0 0;
+    }
+
+  & > * {
+    /*padding: 0 20px;
+    vertical-align: top;*/
+    &:last-child {
+      border-bottom: none;
+      border-right: none;
+    }
+    &:not(:first-child) {
+      /*padding-top: 10px;*/
+    }
+  }
+
+  .book-image {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 20px 0 0;
+  }
+
+  .order-item-title {
+    color: $slate;
+    display: table-cell;
+    max-width: 300px;
+    vertical-align: top;
+    line-height: 1.8;
+    .item-title {
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .item-author {
+      font-weight: 400;
+    }
+  }
+
+  .order-item-rental-details {
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .order-item-price {
+    display: table-cell;
+    vertical-align: middle;
+    border-right: 1px solid $lightghost;
+    width: 100%;
+  }
+
+  .order-item-refund {
+    display: table-cell;
+    float: right;
+    min-width: 150px;
+    line-height: 1.5;
+    vertical-align: top;
+    .refund-link-text {
+      span {
+        float: right;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+// individual elements
+.refund-link {
+  color: $white;
+  min-width: 137px;
+  height: 27px;
+  font-weight: normal;
+  /*font-size: 0.875rem;
+  margin-bottom: .625em;*/
+  font-family: "roboto";
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: $darkstorm;
+}
+.return-policy-link {
+  font-weight: normal;
+  color: $darkstorm;
+  text-decoration: underline;
+}
+.request-refund-button {
+  font-size: 13px;
+  background: $cloud;
+  border: $darkcloud solid 1px;
+  border-radius: 4px;
+  padding: 5px 25px;
+  margin: 10px 0 0 0;
+  width: 100%;
+  cursor: pointer;
+  span {
+    font-weight: 300 !important;
+  }
+}
+/*Request refund*/
+.request-refund-itembox {
+  width: 80%;
+}
+/*Request refund*/
+@media screen and (max-width: 645px) {
+  #orders {
+    section {
+      padding:0;
+    }
+  }
+.purchase-details {
+  padding: 20px 15px;
+}
+.purchases {
+  padding: 25px 15px;
+}
+.detail {
+  /*float: none;
+  padding: 0;
+
+  &:first-child {
+  float:left;
+  width: 35%;
+  }
+  &:nth-child(2) {
+   width: auto;
+   clear: both;
+   padding-top: 20px;
+  }*/
+  /*Request refund*/
+  .request-refund {
+    padding: 0 10px;
+  }
+  .request-refund-itembox {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 525px) {
+  .detail {
+    display: block;
+    float: none;
+    padding: 0 0 10px 0;
+    span {
+      display: inline-block;
+    }
+    &:first-child {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
+    &:nth-child(2) {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
+    &:nth-child(3) {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      display: inline-block;
+    }
+    &:nth-child(4) {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      display: inline-block;
+    }
+    &:last-child {
+      width: 100%;
+      position: absolute;
+      top: 15px;
+      right: 0;
+    }
+  }
+  .order-item {
+    display: block;
+    .order-item-title {
+      display: block;
+      padding-left: 10px;
+      border: none;
+      min-width: 100%;
+    }
+    .order-item-rental-details {
+      display: block;
+      padding-left: 10px;
+      border: none;
+      min-width: 100%;
+    }
+    .order-item-refund {
+      display: block;
+      padding-left: 10px;
+      border: none;
+      min-width: 100%;
+      .refund-link {
+        width: 100%;
+        min-width: 292px;
+      }
+    }
+  }
+}
+
+.refund-link {
+  height: 30px;
+}
+/*Request refund*/
+.request-refund {
+  padding: 0 10px;
+}
+.request-refund-itembox {
+  width: 100%;
+}
+/*Request refund*/
+}
+@media screen and (max-width: 375px) {
+  .refund-link {
+    min-width: 0;
+    width: 100%;
+    height: 30px;
+  }
+}

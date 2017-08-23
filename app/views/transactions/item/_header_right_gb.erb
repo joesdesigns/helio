@@ -1,0 +1,3 @@
+  <div class='detail_label'>Total: <span><%= localize_price((@item['item_price'].to_f + @item['tax'].to_f),@item['currency'])%></span></div>
+    <div class='detail_label'>Total VAT: <span><%= localize_price(@item['tax'] ,@item['currency'])%></span></div>
+  

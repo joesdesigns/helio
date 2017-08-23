@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <user>
+    <email>helio2@test.com</email>
+    <first-name>Joe</first-name>
+    <last-name>Chappie</last-name>
+    <guid>EY37SDDXVEXN7RZMR2XE</guid>
+    <uber-license>false</uber-license>
+    <last-activation-date>Tue, 17 May 2016 10:45:35 GMT</last-activation-date>
+    <sso-only>false</sso-only>
+    <require-deactivate>false</require-deactivate>
+    <require-book-list-update>false</require-book-list-update>
+    <store-url/>
+    <timestamp>20160519123613</timestamp>
+    <max-desktop-activations>2</max-desktop-activations>
+    <max-mobile-activations>2</max-mobile-activations>
+    <email-locked>false</email-locked>
+    <locale>en</locale>
+    <referral-guid>2a57620e723da24d5dba94584e9d5494</referral-guid>
+    <middle-initial/>
+    <country/>
+    <state/>
+    <affiliate/>
+    <promote-option>false</promote-option>
+    <survey-option>false</survey-option>
+    <eula_accepted>false</eula_accepted>
+    <eula_accepted_at></eula_accepted_at>
+    <question-response>333</question-response>
+    <question-id>1</question-id>
+    <last-brand-accessed>fraction</last-brand-accessed>
+    <bookshelf-preference>Online</bookshelf-preference>
+    <save-last-cc>false</save-last-cc>
+    <roles>
+      <role>
+        <id>2363</id>
+        <name>learner</name>
+        <school-id>922</school-id>
+        <verified>false</verified>
+        <regions type="array"></regions>
+        <context>stargate</context>
+      </role>
+    </roles>
+  </user>
+ 

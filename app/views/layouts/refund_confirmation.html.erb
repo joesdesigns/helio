@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'shared', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% #= render 'shared/menu_mobile' %>
+<header role="banner">
+ <div class="left">
+ 	<button class="menu-icon" aria-label="navigation menu">Menu icon</button>
+    <div id="logo">
+    	<div class="logo">
+      		<a href="/#/"><%= image_tag design_branding[:logo], alt: design_branding[:alt] %></a>
+      	</div>
+      	<div class="logo-mobile">
+      		<a href="/#/"><%= image_tag design_branding[:mobile_logo], alt: design_branding[:alt] %></a>
+      	</div>
+    </div>
+	 <%= render 'shared/header_support' if design_branding[:show_support]%>
+  </div>
+</header>
+<div id="results_div" class="page-error-message" tabindex="0"></div>
+<%= yield %>
+</div>
+</body>
+</html>

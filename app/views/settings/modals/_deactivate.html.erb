@@ -1,0 +1,17 @@
+<div id="deactivate_modal" class='hidden'>
+  <div id="deactivate_modal_close">
+    <a href="javascript:close_modal('#deactivate_modal');" class="close-icon"><span class="sr-only">close</span></a>
+  </div>
+  <%= form_tag(:settings_deactivate_device, :method => 'PUT', class: 'deactivate_modal_form' ,remote: true) do %>
+  <!--<%= label_tag '', "Are you sure you want to deactivate this device?", 
+    class: 'small_label' %>-->
+    <div id="heading-deactivate-modal" tabindex="-1" style="outline:0;">
+    	<p class="forms_text" style="margin-top:5px;">Are you sure you want to deactivate this device?</p>
+    </div>
+  <%= hidden_field_tag "deactivation_id", '' %>
+  <div class="modal-buttons">
+  <%= submit_tag "Cancel", :type => "reset", :onclick => "return close_modal('#deactivate_modal')"  %>
+  <%= submit_tag "Yes", :type => "submit" , :onclick => "return close_modal('#deactivate_modal')"  %>
+  </div>
+  <% end %>
+</div>

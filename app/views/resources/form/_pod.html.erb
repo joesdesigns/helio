@@ -1,0 +1,9 @@
+<% if @pod_url && @show_pod -%>
+  <section id="content-box1">
+    <div class="fl" id="pod">
+      <h2 class="head-instructions"><%= t("pod.alt_title")%></h2>
+        <div class="instructions"><%= t("pod.sub_title")%></div>
+      </div>
+      <div class="pod_check"><button class="button_secondary" type="button" onclick="window.location.href='<%= @pod_url %>'" ><%= t("buttons.check_now")%></butotn></div>
+  </section>
+<% end -%>

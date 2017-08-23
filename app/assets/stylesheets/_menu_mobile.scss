@@ -1,0 +1,180 @@
+@import 'colors';
+.menu-close-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 270px;
+  z-index: 9999;
+  cursor: pointer;
+}
+.menu-close-icon a {
+	position: absolute;
+	top:15px;
+	right:20px;
+	background-image: url(asset-path('x_white.svg'));
+	background-repeat: no-repeat;
+	height:15px;
+	width:15px;
+}
+.main-menu {
+  width: 270px;
+  padding: 0 18px;
+  height: 100%;
+  background: $darkninja;
+  position: absolute;
+  overflow-y: auto;
+  z-index: 99;
+  .user-header {
+    margin: 40px 0 20px 0;
+    .user-full-name {
+      font-weight: 500;
+      font-size: 1.1875rem;
+      color: #ffffff;
+    }
+    .user-email-address {
+      font-weight: 300;
+      color: #b9b9d3;
+      font-size: 0.75rem;
+    }
+  }
+  .divider {
+    height: 2px;
+    margin: 20px 0;
+    background: $ninja;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 13px 0;
+      cursor: pointer;
+      //text-indent: 32px;
+      padding: 0 0 0 32px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      height: 22px;
+      button, a {
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+		font-size: 0.875rem;
+        color: inherit;
+        &:hover {
+          color: #b9b9d3;
+        }
+      }
+      &:first-child {
+      }
+      &:last-child {
+      }
+      color: #ffffff;
+      &:hover {
+        color: #b9b9d3;
+      }
+    }
+  }
+  .user-info-item {
+    background-image: url(asset-path('user_info2.svg'));
+    background-size: 20px 14px;
+    background-position: left 2px;
+    &:hover {
+      background-image: url(asset-path('user_info_hover2.svg'));
+    }
+  }
+  .devices-item {
+    background-image: url(asset-path('devices.svg'));
+    background-size: 14px 14px;
+    background-position: 3px 2px;
+    &:hover {
+      background-image: url(asset-path('devices_hover.svg'));
+    }
+  }
+  .purchases-item {
+    background-image: url(asset-path('purchases.svg'));
+    background-size: 14px 14px;
+    background-position: 3px 2px;
+    &:hover {
+      background-image: url(asset-path('purchases_hover.svg'));
+    }
+  }
+  .settings-item {
+    background-image: url(asset-path('resources_main_menu.svg'));
+    background-size: 14px 14px;
+    background-position: 3px 2px;
+    &:hover {
+      background-image: url(asset-path('resources_main_menu_hover.svg'));
+    }
+  }
+  .orders-item {
+    background-image: url(asset-path('orders.svg'));
+    background-size: 14px 14px;
+    background-position: 3px 2px;
+    &:hover {
+      background-image: url(asset-path('orders_hover.svg'));
+    }
+  }
+  .bookshelf-item {
+    background-image: url(asset-path('circle_bookshelf_sm.svg'));
+    background-size: 22px 22px;
+    &:hover {
+      background-image: url(asset-path('circle_bookshelf_sm_hover.svg'));
+    }
+  }
+  .store-item {
+    background-image: url(asset-path('circle_store_sm.svg'));
+    background-size: 22px 22px;
+    &:hover {
+      background-image: url(asset-path('circle_store_sm_hover.svg'));
+    }
+  }
+  .support-item {
+    background-image: url(asset-path('circle_support_sm.svg'));
+    background-size: 22px 22px;
+    &:hover {
+      background-image: url(asset-path('circle_support_sm_hover.svg'));
+    }
+  }
+  .how-to-item {
+    background-image: url(asset-path('how-to_guide.svg'));
+    &:hover {
+      background-image: url(asset-path('how-to_guide_hover.svg'));
+    }
+  }
+  .about-item {
+    background-image: url(asset-path('about.svg'));
+    background-size: 14px 14px;
+    background-position: 3px center;
+    &:hover {
+      background-image: url(asset-path('about_hover.svg'));
+    }
+  }
+  .sign-out-item {
+    background-image: url(asset-path('sign_out.svg'));
+    background-size: 14px 14px;
+    background-position: 5px center;
+    &:hover {
+      background-image: url(asset-path('sign_out_hover.svg'));
+    }
+  }
+}
+
+.menu-hidden {
+  display: block;
+  margin-left: -270px;
+}
+
+.menu-close-hidden {
+  display: none;
+}
+
+.menu-open {
+  display: block !important;
+  //margin-left: 270px;
+}
+@media (max-width: 480px) {
+	.main-menu {
+		width: 100%;
+	}
+}

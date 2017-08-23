@@ -1,0 +1,39 @@
+<%= render 'resources/cards/pod' %>
+  <section id="content-box1"><h2 class="head-instructions"><%= t('content.resources.title')%></h2>
+  <div class="instructions"><%= t('content.resources.sub_title')%></div>
+
+<%if  @resources.count  > 0  %>
+  <div class="orders">
+    <% @resources.each do |x| %>
+        <div class="order-details">
+          <%= image_tag(x[:image], :alt => "", :class => "book_image", :width => "90", :height => "109") %>
+          <div class="book-description">
+            <div class="book-title"><%= x[:title] %></div>
+            <div class="book-details">
+              <% if !x[:author].blank? %>
+                by <%= x[:author] %><br>
+              <% end %>
+                <%= t('content.resources.isbn')%>: <%= x[:isbn] %>
+            </div>
+            <div class="resources">
+        <% if x[:resource_count] == 1%>
+          <%= x[:resource_count] %> <%= t('content.resources.display')%>
+        <% else %>
+          <%= x[:resource_count] %> <%= t('content.resources.displayed')%>
+        <% end %>
+        </div>
+          </div>
+          <div class="arrow-container">
+            <div class="order-details-continue">
+            <%= link_to image_tag(asset_path("forward_arrow.png"), :alt => "Select to view resources", :class => "forward-arrow", :width => "14", :height => "20" ), 'javascript:void(0);', :onclick =>
+              "show_resources('#{x[:isbn]}')" %>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+  <% else %>
+  <br>
+  <%= t('content.resources.null_state') %>
+  <% end %>

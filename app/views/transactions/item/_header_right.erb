@@ -1,0 +1,5 @@
+
+    <div class='detail_label'>Sub Total: <span><%= localize_price(@item['item_price'] ,@item['currency'])%></span></div>
+    <div class='detail_label'>Tax: <span><%= localize_price(@item['tax'] ,@item['currency'])%></span></div>
+    <div class='detail_label total-label'>Total: <span>
+    <%= localize_price((@item['item_price'].to_f + @item['tax'].to_f),@item['currency'])%></span></div>

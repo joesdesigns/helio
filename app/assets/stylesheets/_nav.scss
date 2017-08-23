@@ -1,0 +1,141 @@
+@import 'colors';
+
+#content-left {
+  /*width: 29.1666%; 29.1666%;*/ /*350px/1200px*/
+  width: 278px; /*Added from new UI designs*/
+  display: inline-block;
+  background-color: $ghost;
+  clear: both;
+  /*position: absolute;
+  top:0;*/
+  position: fixed;
+  top: 44px;
+  bottom:0;
+  .name {
+    font-size: 1.875rem;
+    padding-bottom: 5px;
+	line-height:1.2;
+  }
+
+  .position {
+    font-size: 0.875rem;
+    font-weight: bold;
+	text-transform: capitalize;
+  }
+  .email {
+    font-size: 0.875rem;
+    font-weight: lighter;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .user_info {
+    //margin-top: 2.6875em;
+    margin-top: 60px;
+    margin-bottom: 4.25em;
+    /*margin-left: 14.285%; 50px/350px
+    margin-left: 2.6em;*/
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .last-name {
+	  display: inline-block;
+  }
+  a {
+    color: $darkninja;
+    width: 100%;
+    height: 3.125em;
+    /*padding: 0 0 0 2.6em;*/
+    padding: 0 30px;
+    text-decoration: none;
+    /*border-bottom: 2px solid $darkghost;*/
+    display: block;
+
+    /*&:first-of-type {
+      border-top: 2px solid $darkghost;
+    }*/
+
+    .text {
+      height: 3.125em;
+      margin: 0;
+      display: table-cell;
+      vertical-align: middle;
+	  padding: 0 0 0 38px;
+    }
+
+    .page-name {
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+    .description {
+      font-size: .875rem;
+      font-weight: lighter;
+    }
+	.userinfo-icon {
+		background: url(asset-path('userinfo_icon.svg')) no-repeat left center;
+		background-size: 24px 15px;
+	}
+	.devices-icon {
+		background: url(asset-path('devices_icon.svg')) no-repeat left center;
+		background-size: 18px 19px;
+	}
+	.resources-icon {
+		background: url(asset-path('resources_icon.svg')) no-repeat left center;
+		background-size: 18px 21px;
+	}
+	.transactions-icon {
+		background: url(asset-path('transactions_icon.svg')) no-repeat left center;
+		background-size: 17px 18px;
+	}
+    &.current {
+      background-color: $lightghost;
+      border-right: 5px solid $lightcheddar;
+
+      &.description {
+        font-weight: light;
+      }
+    }
+  }
+}
+.content-left-responsive {
+	  display: none;
+  }
+  .user-profile-menu-responsive {
+	  display: none;
+  }
+@media (max-width: 900px) {
+	#content-left {
+		.user_info {
+			/*margin-left: 5%;*/
+		}
+	}
+}
+@media (max-width: 800px) {
+	#content-left {
+		width: 100%;
+		margin-right: 0;
+		height: auto;
+		position: relative;
+		top: auto;
+		bottom: auto;
+		.user-profile-menu {
+			display: none;
+		}
+		.user_info {
+			margin: 0;
+			padding: 25px 20px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		a {
+			width: auto;
+		}
+	}
+	.user-profile-menu-responsive {
+		display: block;
+		padding: 0 15px;
+		margin: 15px 0;
+
+	}
+}

@@ -1,0 +1,13 @@
+<section id="content-box4">
+<%= form_tag('#', {:id => 'notification-form'}) do %>
+  <h2><%= t('user.notification.title')%></h2>
+    <div class="field-algn">
+      <%= check_box_tag '[user][promote_option]', true, @details["user"]["promote_option"]== 'true' ? true : false, class: 'accept_tos', id: 'notification-option'  %>
+      <%= label_tag 'promote_option',t('user.notification.combined'), class: 'small_label',
+            for: 'notification-option' %>
+    </div>
+    <div class="field-algn personal-info-save">
+      <%= submit_tag t('buttons.save'), :type => "submit" %>
+    </div>
+    <% end %>
+</section>

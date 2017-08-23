@@ -1,0 +1,88 @@
+@import "colors";
+
+.button {
+  font-weight: normal;
+  font-size: 1rem;
+  font-family: "roboto";
+  color: #ffffff;
+  border-width: 0;
+  border-radius: 4px;
+   -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  margin-bottom: .625em;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+.modal-buttons {
+	input[type="submit"] {
+	 @extend .button;
+	 background-color: $darkocean;
+   padding: 5px 55px;
+	}
+  input[type="reset"] {
+    padding: 5px 40px;
+  }
+}
+.personal-info-save {
+  input[type="submit"] {
+   @extend .button;
+   padding: 5px 40px;
+  }
+}
+.page-buttons {
+	input[type="submit"] {
+	 @extend .button;
+	 background-color: $darkocean;
+   padding: 5px 10px;
+	}
+}
+input[type="submit"] {
+  @extend .button;
+  background-color: $darkocean;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  margin-top: .625em;
+}
+
+input[type="reset"] {
+  @extend .button;
+  background-color: $darkelephant;
+  padding: 5px 25px;
+  margin-right: 10px;
+}
+
+input[type="button"] {
+  @extend .button;
+  background-color: $darkelephant;
+}
+
+a {
+  text-decoration: none;
+  color: $ocean;
+}
+
+a.primary {
+  color: $cheddar;
+  text-decoration: none;
+}
+.button_secondary {
+  font-weight: 500;
+  font-size: 0.875rem;
+  font-family: "roboto";
+  color: $darkninja;
+  border-width: 0;
+  margin: 1rem 0 0 0;
+  width: 150px;
+  height: 30px;
+  cursor: pointer;
+  background-color: $lighterghost;
+  -webkit-appearance: none;
+  box-shadow: 0 1px 1px $darkninja;
+  border-radius: 4px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+}
+

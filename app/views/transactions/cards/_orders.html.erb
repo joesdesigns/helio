@@ -1,0 +1,22 @@
+<% if @active_orders.empty? %>
+  <p class="zero-purchases"><%= t("transactions.transactions_null", href: link_to("Vitalsource.com", "https://www.vitalsource.com/")).html_safe %></p>
+<% else %>
+  <div id="transactions" class="purchases">
+      <ul class="transactions_list_header">
+        <li class="list_header_purchased"><%= t("transactions.header.purchases")%></li>
+        <li class="list_header_confirmation"><%= t("transactions.header.confirmation_num")%></li>
+        <li class="list_header_total"><%= t("transactions.header.total")%></li>
+        <li>&#160;</li>
+      </ul>
+      <div class="generated_list">
+      <% @active_orders.each do |order| %>
+          <ul class="transactions_list">
+            <li class="date_purchased"><%= order.order_date %></li>
+            <li class="confirmation_number"><%= order.number %></li>
+            <li class="total"><%= localize_price(order.tax(true),order.currency) %></li>
+            <li class="details_link"><%= link_to  "Details", details_path(order.number), :target => "_blank",  :class => 'order_details_link'%></li>
+          </ul>
+      <% end %>
+      </div>
+  </div>
+<% end %>

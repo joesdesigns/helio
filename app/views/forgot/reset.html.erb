@@ -1,0 +1,15 @@
+<div class="signin-container" role="main">
+  <div class="sign-in">
+  	<h1>Reset Your Password</h1>
+	<%= form_tag(:forgot_update, :method => 'PUT',  remote: true) do %>
+		<%= label_tag '[new_password]', "New Password" , class: 'sr-only' %>
+    	<%= text_field_tag("[new_password]",nil, :placeholder => 'New Password' , class: 'textfields', "aria-required" => true) %>
+    	<%= label_tag '[new_password_confirmed]', "Confirm Password" , class: 'sr-only' %>
+     	<%= text_field_tag("[new_password_confirmed]",nil, :placeholder => 'Confirm Password' , class: 'textfields', "aria-required" => true) %>
+     	<%= hidden_field_tag("[token]",params[:token]) %>
+     	<%= submit_tag "Submit" , id: 'submit_button' %>
+		<% end %>
+		<hr aria-hidden="true">
+		<p>I just remembered it? <a href="/login" class="primary">Sign In.</a></p>
+	</div>
+</div>

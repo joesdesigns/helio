@@ -1,0 +1,15 @@
+<div class="purchase-details">
+  <div class="details-left-container detail_date">
+    <div class="details_header_left">
+      <%= t("transactions.header.purchases")%>: <%= @item["order_date"]  %>
+    </div>
+    <div class="details_header_left">
+      Payment: <%= @item["credit_card_type"].upcase %> <%= @item["credit_card_number"] %>
+    </div>
+  </div>
+  <div class="details-right-container">
+    <%= render :partial => "transactions/item/header_right_gb" if @item['currency'] == "GBP" %>
+    <%= render :partial => "transactions/item/header_right_au" if @item['currency'] == "AUD" %>
+    <%= render :partial => "transactions/item/header_right" if @item['currency'] == "USD" %>   
+  </div>
+</div>

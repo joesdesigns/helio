@@ -1,0 +1,9 @@
+    <div class="details_header_left">
+      <%= t("transactions.header.purchases")%>: <%= @details.order_date  %>
+    </div>
+    <div class="details_header_left">
+      <%= t("transactions.header.total")%> <%= @details.number %>
+    </div>
+    <div class="details_header_left">
+     <%= t("transactions.header.payment")%>: <%= @details.credit_card_type %> <%= @details.credit_card_number %>
+    </div>

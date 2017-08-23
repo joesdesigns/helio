@@ -1,0 +1,363 @@
+<style>
+@charset "UTF-8";
+/* CSS Document */
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  position: relative;
+  background-color: white;
+  font-family: helvetica;
+}
+.print-receipt {
+  margin: 1px auto;
+  display: block;
+  background: white;
+  /*border: 2px solid #bdbdbd*/
+}
+.print-receipt-logoheader {
+  padding:  50px 20px 10px 0;
+}
+.card-info {
+  margin: 10px 0;
+}
+.print-receipt__logo-black {
+  display: none;
+}
+.print-receipt__logo-color{
+  height: 40px !important;
+  width: 226px !important;
+  float: left;
+  display: block;
+}
+.print-receipt__header {
+  background: #000000 !important;
+  /*padding-top: 10px !important;
+  padding-bottom: 4px !important;*/
+  padding: 15px;
+  color: #fff;
+}
+.print-receipt__header h1 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.print-receipt__header-text {
+  margin-top: 20px;
+  font-weight: 700;
+  float: right;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #007fad;
+  border: none;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 30px;
+}
+.print-receipt__header-text a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.print-receipt__ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 50px;
+  font-size: 14px;
+}
+.print-receipt__ul li {
+  /*padding-bottom: 5px !important;*/
+}
+.print-receipt__ul__inner {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 20px 0;
+  font-size: 14px;
+}
+.print-receipt__ul:last-child .print-receipt__ul__inner {
+  padding-bottom: 0;
+}
+.print-receipt__ul__inner li {
+  /*padding-bottom: 5px !important;*/
+}
+.print-receipt__ul__total {
+  list-style-type: none;
+  margin: 0;
+  /*padding: 15px 50px 5px 0;*/
+  font-size: 14px;
+}
+.print-receipt__ul__total li {
+  padding-bottom: 20px !important;
+  font-size: 14px;
+}
+.print-receipt__upper {
+  height: 100px;
+  padding-top: 20px ;
+  padding-bottom: 20px ;
+  background: #f6f7f9;
+  border-bottom: 2px solid #bdbdbd;
+  border-left: 2px solid #bdbdbd;
+  border-right: 2px solid #bdbdbd;
+}
+.print-receipt-item {
+  width: 100%;
+  /*padding: 10px 0;*/
+  padding: 0;
+}
+.print-receipt-itemdetails {
+  float: left;
+  width: 75%;
+}
+.print-receipt-itemprice {
+  float: left;
+  width: 25%;
+  text-align: right;
+}
+.u-align--right {
+    text-align: right;
+}
+.print-receipt__lower {
+  padding-top:35px;
+  background: white;
+  /*border-bottom: 2px solid #bdbdbd;*/
+  border-right: 2px solid #bdbdbd;
+  border-left: 2px solid #bdbdbd;
+}
+.print-receipt__hr {
+  padding: 0px;
+  margin: 20px;
+  display: block;
+  border-bottom: 1px solid #cccccc
+}
+.print-receipt__large-font {
+  font-size: 14px !important;
+  font-weight: bold;
+}
+.print-receipt-total {
+  background: white;
+  /*border-bottom: 2px solid #bdbdbd;*/
+  border-right: 2px solid #bdbdbd;
+  border-left: 2px solid #bdbdbd;
+  padding: 25px 50px;
+}
+.print-receipt__medium-font {
+  font-size: 14px;
+  font-weight: bold
+}
+.print-receipt-totalvalue {
+  text-align: right;
+  float: left;
+  width: 50%;
+}
+.print-receipt-totallabel {
+  width: 50%;
+  float: left;
+  text-align: right;
+}
+#refund_total {
+  font-weight: bold;
+  font-size: 24px;
+  color: green;
+}
+#order_total {
+  font-weight: bold;
+  font-size: 24px;
+}
+.print-receipt-itemprice-label {
+  width: 60%;
+  float: left;
+  text-align: right;
+  padding: 0 0 5px 0;
+}
+.print-receipt-refundprice-label {
+  width: 60%;
+  float: left;
+  text-align: right;
+  color: green;
+}
+
+.print-receipt-itemprice-amount {
+  width: 40%;
+  float: right;
+  text-align: right;
+}
+.print-receipt-refundprice-amount {
+  width: 40%;
+  float: right;
+  text-align: right;
+  color: green;
+}
+.print_receipt_upper_left{
+  width:50%;
+  float: left;
+}
+.print_receipt_upper_right{
+  width:50%;
+  float: right;
+  text-align: right;
+}
+.print_receipt_upper_right .print-receipt__ul li, .print_receipt_upper_left .print-receipt__ul li {
+  padding-bottom: 5px;
+}
+.print_receipt_upper_right .print-receipt__ul li span{
+  font-weight: 700;
+  padding: 0 5px 0 0;
+}
+@media print {
+.print-receipt__logo-black {
+  height: 40px !important;
+  width: 226px !important;
+  float: left;
+  display: block;
+}
+.print-receipt__logo-color{
+  display: none;
+}
+}
+</style>
+<% @currency = Currency.new(@print["currency"]) %>
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<!-- <link rel="stylesheet" type="text/css" href="css/print.css"> -->
+</head>
+
+<body>
+<div class="container">
+  <div class="print-receipt">
+    <div class="print-receipt-logoheader">
+      <img class="print-receipt__logo-black" src="<%= asset_path('vitalsource-logo-black.png') %>" alt="vitalsource logo">
+      <img class="print-receipt__logo-color" src="<%= asset_path('vitalsource_color.svg') %>" alt="vitalsource logo">
+      <div class="print-receipt__header-text"> <a onclick="window.print();" id="print_receipt_link" href="javascript:void(0);">Print This Receipt</a> </div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="print-receipt__header">
+      <h1>Order Confirmation</h1>
+    </div>
+    <div class="print-receipt__upper">
+     <div class='print_receipt_upper_left'>
+      <ul class="print-receipt__ul">
+        <li>Billing Address:</li>
+        <li><%= @print['billing_address']['name']%></li>
+        <li><span><%= @print['billing_address']['line1']%>&nbsp;<%= @print['billing_address']['line2']%></span></li>
+        <li><span><%= @print['billing_address']['city']%>, <%= @print['billing_address']['state']%> <%= @print['billing_address']['postal_code']%></span></li>
+        </ul>
+        </div>
+      <div class='print_receipt_upper_right'>
+      <ul class="print-receipt__ul">
+        <li><span>Order Placed:</span><%= @print['order_date'].to_date.strftime('%-m/%-d/%Y') %></li>
+        <li><span>Order Confirmation:</span><%= @print['number']%></li>
+        <li><%= @print['credit_card_type'].upcase%>&nbsp;<%= @print['credit_card_number']%></li>
+        </ul>
+        </div>
+    </div>
+    <div class="print-receipt__lower">
+    <% @print['purchase_items'].each do |x| %>
+      <ul class="print-receipt__ul">
+      <li>
+        <div class="print-receipt-item">
+          <div class="print-receipt-itemdetails">
+            <div><span class="print-receipt__medium-font"><%= x['title']%></span></div>
+              <ul class="print-receipt__ul__inner">
+                <% if x['duration']=='purpetual' %>
+                  <li class="print-receipt__medium-font">Non-expiring</li>
+                <li>This book does not expire</li>
+                <% else %>
+                 <li class="print-receipt__medium-font"><%= x['duration']%> Access</li>
+                <% end %>
+              </ul>
+          </div>
+          <div class="print-receipt-itemprice">
+              <div class="print-receipt-itemprice-label">
+              Price:
+              </div>
+              <div class="print-receipt-itemprice-amount">
+              <%= number_to_currency(x["item_price"], unit: @currency.symbol)%> <% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %>
+              </div>
+              <% if x['refunded'] %>
+              <div class="print-receipt-refundprice-label">
+              Refund:
+              </div>
+              <div class="print-receipt-refundprice-amount">
+              -<%= number_to_currency(x['item_price'], 
+            unit: currency_symbol(@print['currency']))%><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %>
+              </div>
+              <% end %>
+          </div>
+          <div style="clear: both"></div>
+        </div>
+      </li>
+      </ul>
+     <% end %>
+    </div>
+    <div class="print-receipt-total" style="padding-bottom: 0;">
+      <hr style="border: 1px solid #bdbdbd; margin-bottom: 25px;" />
+      <div style="float: right; width: 55%;">
+        <ul class="print-receipt__ul__total">
+        <li>
+            <div class="print-receipt-totallabel">Subtotal:</div>
+            <div class="print-receipt-totalvalue"><%= number_to_currency(@print['total_unit'], 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %></div>
+          </li>
+           <li>
+            <div class="print-receipt-totallabel"><%= tax_label(@print['currency']) %></div>
+            <div class="print-receipt-totalvalue">
+            <% if @print["currency"] == "AUD" %>
+              Not Applicable
+            <% else %>
+            <%= number_to_currency(@print['total_tax'], 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %></div>
+            <% end %>
+          </li>
+           <li id="order_total">
+            <div class="print-receipt-totallabel">Order Total:</div>
+            <div class="print-receipt-totalvalue"><%= number_to_currency(@print['total_unit'].to_f + @print['total_tax'].to_f , 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %></div>
+          </li>
+          <div style="clear: both"></div>
+        </ul>
+      </div>
+
+
+      <div style="clear: both"></div>
+    </div>
+
+     <div class="print-receipt-total" style="border-bottom: 2px solid #bdbdbd;">
+     <% if @print['refund_total_unit'].to_f > 0 %>
+      <hr style="border: 1px solid #bdbdbd; margin-bottom: 25px;" />
+      <div style="float: right; width: 55%;">
+        <ul class="print-receipt__ul__total">
+        <li>
+            <div class="print-receipt-totallabel">Refund Subtotal:</div>
+            <div class="print-receipt-totalvalue"><%= number_to_currency(@print['refund_total_unit'], 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %></div>
+          </li>
+           <li >
+            <div class="print-receipt-totallabel">Refund Tax:</div>
+            <div class="print-receipt-totalvalue">
+            <% if @print["currency"] == "AUD" %>
+            Not Applicable
+            <% else %>
+            <%= number_to_currency(@print['refund_total_tax'], 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %>
+            <% end %>
+            </div>
+          </li>
+           <li id="refund_total">
+            <div class="print-receipt-totallabel">Refund Total:</div>
+            <div class="print-receipt-totalvalue">-<%= number_to_currency(@print['refund_total_unit'].to_f + @print['refund_total_tax'].to_f, 
+            unit: @currency.symbol) %><% if @print["currency"] != "GBP" %><%= @currency.postfix %><% end %></div>
+          </li>
+          <div style="clear: both"></div>
+        </ul>
+      </div>
+      <% end %>
+      <div style="clear: both"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

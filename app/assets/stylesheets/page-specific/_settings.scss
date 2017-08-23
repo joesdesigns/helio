@@ -1,0 +1,57 @@
+@import 'colors';
+
+.device-table {
+  margin: 1.375em 0 3.125em 0;
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid $lighterghost;
+  border-bottom: 1px solid $lighterghost;
+
+  td, th {
+    &:first-child {
+      padding-left: 1.86em;
+    }
+  }
+  
+  tr {
+	  border-bottom: 1px solid $lighterghost;
+  }
+  th {
+    padding: 0.375em 0;
+    text-align: left;
+    background-color: $ghost;
+    font-size: .875rem;
+  }
+
+  td {
+    font-weight: lighter;
+    padding: 1.25em 0;
+    color: $elephant;
+
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+
+}
+.device-table-responsive {
+	  display: none;
+  }
+@media (max-width: 800px) {
+	.device-table {
+		display: none;
+	}
+	.device-table-responsive {
+		display: block;
+		padding: 35px 0 25px 25px;
+	}
+	.device-info {
+		padding: 0 0 30px 0;
+		line-height: 1.5;
+		
+		.deactivate {
+			position: relative;
+			top: 8px;
+		}
+	}
+}

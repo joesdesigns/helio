@@ -1,0 +1,72 @@
+<% @currency = Currency.new(@refund["currency"]) %>
+<div class="container request-refund-container">
+	<h1>Refund Request</h1>
+ 	<div id="orders">
+		<section id="content-box1">
+			<div class="purchases request-refund">
+    			<h2>We're sorry you were not satisfied with your VitalSource eTextbook.</h2>
+    			<div>
+     				<div class="request-refund-itembox">
+      					<div class="order-item">
+        					<!--<img alt="" class="book_image" width="90" height="109" src="http://covers.vitalbook.com/vbid/9781577663058/width/120">-->
+                  <%= image_tag(asset_path(@refund['image_url']), :alt => "", :class => "book_image", :width => "90", :height => "109") %>
+       						<div class="order-item-title">
+            					<%= @refund['title'] %>.
+                      <%= edition_copyright(@refund['edition'], @refund['copyright'])%> 
+          					</div>
+          					<div class="order-item-rental-details">
+          		  				<div class="duration-text"><%= @refund['duration'] %> Rental</div>
+            					<div class="expires-text"></div>
+          					</div>
+          					<div class="order-item-price">
+           						Price <b><%= number_to_currency(@refund["item_price"], unit: @currency.symbol)%> <% if @refund["currency"] != "GBP" %><%= @currency.postfix %><% end %></b>
+        					</div>
+        				</div>
+        			</div>
+       				<div>
+          				<%= form_tag(:request_refund, :id=>"request_refund_form", :method => "PUT") do %>
+            			<h2>Tell Us Why?</h2>
+              			<div class="field-algn">
+              				<%= check_box_tag "reason[]", "dropped course", false, class: 'survey', id: 'dropped_course' %>
+              				<%= label_tag 'dropped_course', 'I dropped the course', class: 'small_label', for: 'dropped_course'  %>
+              			</div>
+              			<div class="field-algn">
+              				<%= check_box_tag "reason[]", 'wrong title', false, class: 'survey', id: 'wrong_title' %>
+             			 	<%= label_tag 'wrong_title', 'This was the wrong book for my course.', class: 'small_label', for: 'wrong_title'  %>
+              			</div>
+              			<div class="field-algn">
+                			<%= check_box_tag "reason[]", 'buy print version', false, class: 'survey', id: 'print_version'  %>
+                			<%= label_tag 'print_version', 'I decided to buy a print version instead.', class: 'small_label', for: 'print_version'  %>
+              			</div>
+              			<div class="field-algn">
+                			<%= check_box_tag "reason[]", 'difficult to read', false, class: 'survey', id: 'difficult_to_read'  %>
+                			<%= label_tag 'difficult_to_read', 'The eTextbook does not include everything I need in my class (e.g. a CD, other web site access, etc.)', class: 'small_label', for: 'difficult_to_read'  %>
+                		</div>
+                    <div class="field-algn">
+                      <%= check_box_tag 'reason[]', 'other', false, class: 'survey otherCheckBox', id: 'other_please_explain' %>
+                      <%= label_tag 'other', 'Other', class: 'small_label', for: 'other_please_explain'  %>
+                    </div>
+                		<div class="field-algn">
+                			<%= label_tag 'details_other', '(Please explain)', class: 'small_label', for: 'other'  %>
+                			<%= text_area_tag(:details_other, "", size: "32x4") %>
+                		</div>
+              			<p class="return-policy">By clicking the "Complete Refund Request" button below, I understand that if I purchase this VitalSource eTextbook again, I will not be eligible to request any further refunds for the same eTextbook.  View full <a href="https://www.vitalsource.com/return-policy" target="_blank">Return Policy</a>. </p>
+                    <%= hidden_field_tag("code",params[:code]) %>
+                    <%= hidden_field_tag("transid",params[:transid]) %>
+                    <%= hidden_field_tag("isbn",@refund['isbn']) %>
+                    <%= hidden_field_tag("item_price",@refund['item_price']) %>
+                    <%= hidden_field_tag("tax",@refund['tax']) %>
+                    <%= hidden_field_tag("credit_card_number",@refund['credit_card_number']) %>
+                    <%= hidden_field_tag("credit_card_type",@refund['credit_card_type']) %>
+            			  <div class="page-buttons refund-buttons">
+            				<%= submit_tag "Cancel" , :type => "reset" , :onclick => "return close_request_refund();" %>
+            				<%= submit_tag "Complete Refund Request" ,:id=> "submit_request_refund",:type => "submit" %>
+            			</div>
+          				<% end %>
+        			</div>
+      			</div>
+    		</div>
+		</section>
+	</div>
+</div>
+<%= render 'shared/footer' if design_branding[:show_footer]%>

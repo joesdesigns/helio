@@ -1,0 +1,23 @@
+<section id="content-box2">
+	<h2><%= t('user.academic.title')%></h2>
+    <div class="field-short">
+    	<%= label_tag '[user][school_state]', t('user.academic.state'), class: 'small_label' %>
+    	<%= select_tag "[user][school_state]", options_for_select(us_states,  @user.school_state) , class: 'short' %>
+    </div>
+    <div class="field-short">
+    	<%= label_tag '[user][school]', t('user.academic.school'), class: 'small_label' %>
+        <%= select_tag "[user][school]", options_for_select(@institutions,
+@user.try(:school)), class: 'short ', disabled: @user.school_state.nil? %>
+      </div>
+      <div class="field-short">
+        <%= label_tag '[user][discipline]', t('user.academic.discipline'), class: 'small_label' %>
+        <%= select_tag "[user][discipline]", options_for_select(["Primary", "Secondary", "Other"]), class: 'short' %>
+		<%= label_tag '[user][sub-discipline]', t('user.academic.sub_discipline'), class: 'small_label' %>
+        <%= select_tag "[user][sub-discipline]", options_for_select(["Primary", "Secondary", "Other"]), class: 'short' %>
+         <%= label_tag '[user][course]', t('user.academic.school'), class: 'small_label' %>
+        <%= select_tag "[user][course]", options_for_select(["Primary", "Secondary", "Other"]), class: 'short' %>
+	</div>
+	<div class="field-algn">
+    	<%= submit_tag t('buttons.save'), :type => "submit" %>
+    </div>
+  </section>

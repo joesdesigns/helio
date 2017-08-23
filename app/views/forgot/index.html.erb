@@ -1,0 +1,18 @@
+<div class="signin-container" role="main">
+  <div class="sign-in">
+  	<h1>Reset Your Password</h1>
+	<%= form_tag url_for(:controller => 'forgot'), :method => 'POST' , remote: true do %>
+	<%= label_tag '[user][email]', "Email" , class: 'sr-only' %>
+    <%= text_field_tag("[user][email]",nil, :placeholder => 'Email' , class: 'textfields', "aria-required" => true) %>
+     <%= submit_tag "Submit" , id: 'submit_button' %>
+	<% end %>
+	<!--Email sent: should display when submit is selected
+	<div class="email_sent_forgot">
+		<p class="head_text">Email Sent</p>
+		<p>An email has been sent with the instructions to reset your password.</p>
+		<p>Didn't get the email? <a href="#" class="primary">Resend.</a></p>
+	</div>-->
+	<hr aria-hidden="true">
+	<p>I just remembered it? <a href="/login" class="primary">Sign In.</a></p>
+	</div>
+</div>

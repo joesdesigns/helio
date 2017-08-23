@@ -1,0 +1,229 @@
+@import 'colors';
+
+.order-details {
+
+  display: block;
+  overflow: auto;
+  padding: 0.625em;
+  border-top: 1px solid $lighterghost;
+  position: relative;
+  &:first-child {
+    margin-top: 2em;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $lighterghost;
+    margin-bottom: 2.5em;
+  }
+}
+
+.book_image {
+  width: 5.625rem;
+  height: 6.8125rem;
+  display: inline-block;
+  margin: 0 1em 0 0;
+  padding: 0;
+}
+
+.book-description {
+  display: inline-block;
+  width: 74.193%; /*33.125em before. ref-980px - 402.5px*/
+  vertical-align: top;
+  margin-right: 2.9411% /*20px/680px*/
+}
+
+.arrow-container {
+  position: absolute;
+  width: 2em;
+  /*height: 8em;*/
+  display: inline-block;
+  right:0;
+  top: 64px;
+  cursor: pointer;
+}
+
+.order-details-continue {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: .8em 0;
+  border-left: 1px dashed #bdbdcb;
+}
+
+.forward-arrow {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.book-title,
+.book-details {
+  margin-bottom: .5em;
+}
+/*resources-list*/
+.fr {
+	float: right;
+}
+.fl {
+	float: left;
+}
+.ctr {
+	text-align: center;
+}
+.pod_check {
+	float: right;
+}
+.return_to_content_section {
+	padding: 20px 25px 20px 45px;
+	background-color: $elephant;
+	margin: 10px 0 -10px 0;
+}
+.return_to_content {
+	color: $white;
+	font-size: 1.125em;
+	padding: 0 0 0 25px;
+	background: url('/assets/arrow_white_left.svg') no-repeat left center;
+	background-size: 13px 21px;
+	font-weight: 500;
+	cursor: pointer;
+	display: inline-block;
+	a {
+		color: $white;
+	}
+}
+.resources-list-headsection {
+	padding: 0.375em 0 0.375em 1.86em;
+    text-align: left;
+    background-color: $ghost;
+	margin: 1.375em 0 1em 0;
+}
+.h3-resources-list {
+	  margin: 0;
+	  font-size: 0.875rem;
+  }
+.resources-list-table {
+  margin: 1.375em 0 1.75em 0;
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid $lighterghost;
+  border-bottom: 1px solid $lighterghost;
+
+  td, th {
+    &:first-child {
+      padding-left: 1.86em;
+    }
+  }
+  a {
+	  font-weight: 500;
+  }
+  tr {
+	  border-bottom: 1px solid $lighterghost;
+  }
+  th {
+    padding: 0.375em 0;
+    text-align: left;
+    background-color: $ghost;
+    font-size: .875rem;
+  }
+
+  td {
+    font-weight: lighter;
+    padding: 1.25em 0.3125em;
+    color: $elephant;
+
+    &:first-child {
+      font-weight: 500;
+    }
+  }
+
+}
+
+@media (max-width: 980px) {
+	.book-description {
+		width: 67.90%; /* ref-800px. 292px/430px*/
+	}
+}
+@media (max-width: 800px) {
+	.order-details {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.book_image {
+		width: 4.375em; /*70/16px*/
+		height: 5.3125em /*85/16px*/
+	}
+	.book-description {
+		width: 80.49%; /* ref-645px- 487/605px*/
+	}
+}
+@media (max-width: 645px) {
+	.book_image {
+		width: 4.375em; /*70/16px*/
+		height: 5.3125em /*85/16px*/
+	}
+	.book-description {
+		 width: 73.18%; /*ref-480px-322px/440px*/
+	}
+	.resources-list-headsection { 
+	padding-left: 0.375em;
+	}
+	.return_to_content_section {
+		padding: 20px 15px 20px 15px;
+	}
+	.resources-list-table {
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr { 
+			display: block; 
+			width:100%;
+    		-webkit-box-sizing: border-box;
+    		-moz-box-sizing: border-box;
+    		box-sizing: border-box;
+    		float:left;
+    		clear:left;
+		}
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr { 
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0,0,0,0);
+			border: 0;
+		}
+		td, th {
+    		&:first-child {
+      		padding: 1em 0 0.625em 0;
+   			 	}
+  			}
+		tbody tr {
+			position: relative;
+		}
+		td {
+    		padding: 0 0 0.625em 0;
+			
+			&:last-child {
+      			position: absolute;
+				right: 0;
+				top: 16px;
+				width: auto;
+   			 	}
+				
+			&:not(:first-child):not(:last-child) {
+				font-size: 0.875rem;
+				}
+			}
+			
+	}
+}
+@media (max-width: 480px) {
+	.book-description {
+		width: 57%; /*ref-320px-162/280*/
+	}
+	.book_image {
+		width: 4.375em; /*70/16px*/
+		height: 5.3125em /*85/16px*/
+	}
+	.pod_check {
+	float: none;
+	}	
+}

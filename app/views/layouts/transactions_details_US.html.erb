@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'shared', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'shared/menu_mobile' %>
+<header role="banner">
+  <div class="left">
+  <button class="menu-icon" aria-label="navigation menu">Menu icon</button>
+    <div id="logo">
+    	<div class="logo">
+      		<a href="<%= current_user.sso_only? ? resources_path : '/' %>"><%= image_tag "logo_vstact.svg", alt: "Vitalsource | Account Center" %></a>
+      	</div>
+      	<div class="logo-mobile">
+      		<a href="<%= current_user.sso_only? ? resources_path : '/' %>"><%= image_tag "logo_act.svg", alt: "Vitalsource | Account Center" %></a>
+      	</div>
+    </div>
+    <%# = render 'shared/user_menu' %>
+  </div>
+</header>
+<div id="results_div" tabindex="0"><%= yield :message %></div>
+
+<div class="content-container" role="main">
+	<%= render 'shared/left_nav' %>
+	<%= yield %>
+</div>
+</div>
+</body>
+</html>

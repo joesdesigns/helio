@@ -1,0 +1,20 @@
+<div id="user_security_modal" class='hidden modals'>
+ <div id="user_security_modal_close"><a href="javascript:close_modal('#user_security_modal');" class="close-icon"><span class="sr-only">close</span></a></div>
+ <h2 id="heading-security-modal" tabindex="-1"><%= t('user.security.title') %></h2>
+  <%= form_tag(:user_update_security, :method => 'PUT',  remote: true) do %>  
+    <div class="field-algn">
+      <%= label_tag '[user][question_id]', t('user.security.question'), class: 'small_label' %>
+      <%= select_tag "[user][question_id]", options_for_select(
+      @security_questions.collect{ |u| [u['name'], u['id']] }, @details["user"]["question_id"]) %>
+    </div>
+    <div class="field-algn">
+      <%= label_tag '[user][question_response]', t('user.security.answer'), class: 'small_label' %>
+      <%= text_field_tag "[user][question_response]", @details["user"]["question_response"], class: 'textfields security-answer', "aria-required" => true %>
+      <div id = "question_response-error" class="field-error-modal hidden">Required</div>
+    </div>
+    <div class="modal-buttons">
+    <%= submit_tag t('buttons.cancel'), :type => "reset", :onclick => "return close_modal('#user_security_modal')" %>
+    <%= submit_tag t('buttons.save'), :type => "submit" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,38 @@
+<div id="content-left">
+  <!--  Navigation User Info Section -->
+  <div class="user_info">
+    <div id="header" class="name">
+      <% if !current_user.sso_only? %>
+        <%= current_user["first_name"] %> <span class="last-name"><%= current_user["last_name"] %></span>
+      <% end %>
+    </div>
+    
+    <div class="position">
+       <%= current_user["school"] %>
+    </div>
+
+     <% if !current_user.sso_only? %>
+    <div class="email"><%= current_user["email"] %></div>
+    <% end %>
+  </div>
+  <nav class="user-profile-menu" role="navigation">
+   <ul>
+    <% if @branded_config[:nav][:user_info] %>
+    <%= render :partial => "shared/nav/user_info" %>
+  <% end %>
+
+  <% if @branded_config[:nav][:reader_settings] %>
+    <%= render :partial => "shared/nav/reader_settings" %>
+  <% end %>
+
+  <% if @branded_config[:nav][:resources] %>
+    <%= render :partial => "shared/nav/resources" %>
+  <% end %>
+
+  <% if @branded_config[:nav][:purchase_history] %>
+    <%= render :partial => "shared/nav/purchase_history" %>
+  <% end %>
+  </ul>
+
+  </nav>
+</div>

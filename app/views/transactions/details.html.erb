@@ -1,0 +1,69 @@
+<div class="content" id="wrapper">
+  <div id="orders">
+    <div class="purchases">
+      <% if @details.nil?%>
+          You have not made any purchases with Vitalsource. Shop eTextbooks at vitalsource.com. Save up to 60% compared to print
+      <% else %>
+        <%if  @details.sub_total > 0 %>
+          <div class="page-header">
+            <h1 class="form-header-heading">  
+              <%= link_to(raw(t("transactions.purchase_detail_title")), transactions_path)%>
+            </h1>
+            <div class="print-reciept">
+              <%= link_to  "Print Receipt", print_order_path(@details.number),:class => 'order_details_link'%>
+            </div>
+          </div>
+          <div class="purchase-details-container">
+            <%= render :partial => "transactions/details/details_header_common" %>
+            <div>
+              <% #@details.items.each do |item| %>
+              <% @details['purchase_items'].each do |x| %>
+              <% Rails.logger.debug "\n\n\n *** details for #{x.to_yaml}" %>
+              <div class="order-item">
+                <div class="order-item-left">
+                  <div class="book-image-contianer">
+                    <%= image_tag(item["image_url"], :alt => "", :class => "book-image", height: "76", width: "76") %>
+                  </div>
+
+                  <div class="order-item-title">
+                      <div class="item-title"><%= item["title"] %></div>
+                      <div class="item-author"><%= item["author"] %></div>
+                      <div><%= edition_copyright(item['edition'], item['copyright'])%></div>
+                  </div>
+
+                  <div class="order-item-rental-details">
+                    <% if item["duration"]=='perpetual' %>
+                      <div class="duration-text">Non-expiring</div>
+                    <% else %>
+                      <div class="duration-text"><%= item["duration"] %> Access</div>
+                    <% end %>
+                    <div class="expires-text"></div>
+                  </div>
+                </div>
+
+                <div class="order-item-refund">
+                  <div class="refund-link-text">
+                    Price:  <span><%= localize_item_price(item,@details.currency) %></span>
+                    <div class="vat-included"><% if @details.currency == "GBP" %><%= tax_postfix(@details.currency) %><% end %></div>
+                       <% if item["refundable"]==true && item["refunded"]==false && !@refunded_skus.include?(item["sku"])%>
+                        <%= button_tag  t('buttons.request_refund'), :type => "button",:name => "request_refund", :onclick => "window.location = '#{refund_path(:transid => @details.number, :code => item['code'])}'", class: 'btn btn-small request-refund-button' %>
+                      <% else %>
+                        <% if item["refunded"]==true %>
+                        Refunded
+                        <% else %>
+                        Refund Unavailable <br>
+                          <a href="#" class="show_not_refundable_modal af-link">View Return Policy</a>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "transactions/modals/not_refundable" %>

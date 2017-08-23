@@ -1,0 +1,40 @@
+<section id="content-box1">
+  <h2 class="head-instructions"><%= t('devices.manage.title') %></h2>
+  <div class="instructions"><%= t(design_branding[:devices_sub_title_key], desktop: @owner['max_desktop_activations'], mobile: @owner['max_mobile_activations'])%></div>
+
+  <% if @devices.count > 0 %>
+  <table class="device-table">
+    <tr>
+      <th colspan="2"><%= t('devices.manage.headings.device') %></th>
+      <th><%= t('devices.manage.headings.version') %></th>
+      <th><%= t('devices.manage.headings.updated') %></th>
+      <th></th>
+    </tr>
+    <% @devices.each do |desktop| %>
+    <tr>
+      <td><%= desktop[:mobile].downcase == 'true' ? t('devices.manage.types.mobile') : t('devices.manage.types.computer') %></td>
+      <td><%= desktop[:name] %></td>
+      <td><%= desktop[:version] %></td>
+
+      <td><%= desktop[:last_license_update].nil? ? '' : desktop[:last_license_update].to_date.to_formatted_s(:long)   %></td>
+      <td><%= link_to 'deactivate','#', :onclick => "deactivate_device('#{desktop[:id]}')", :class => 'my-dlink' %></td>
+    </tr>
+  <% end %>
+  </table>
+  <div class="device-table-responsive instructions">
+  <!--Add device info for mobile -->
+<% @devices.each do |desktop| %>
+  <div class="device-info">
+  		<span class="bold"><%= desktop[:mobile].downcase == 'true' ? "Mobile" : "Computer" %></span><br>
+		<%= desktop[:name] %><br>
+		<%= desktop[:version] %><br>
+		<%= desktop[:last_license_update].nil? ? '' : desktop[:last_license_update].to_date.to_formatted_s(:long)   %><br>
+		<%= link_to 'deactivate','#', :onclick => "deactivate_device('#{desktop[:id]}')", :class => 'my-dlink' %>
+    </div>
+<% end %>
+  </div>
+  <% else %>
+  <br>
+ <%= t('devices.null_state') %>
+  <% end %>
+</section>

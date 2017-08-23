@@ -1,0 +1,22 @@
+<div id="transactions" class="purchases">
+  <% if @refunded_items.empty? %>
+   <%= t("refunds.refunds_null", href: link_to("Vitalsource.com", "https://www.vitalsource.com/")).html_safe %>
+  <% else %>
+    <ul class="transactions_list_header">
+      <li class="list_header_purchased"><%= t("refunds.header.purchases")%></li>
+      <li class="list_header_confirmation"><%= t("refunds.header.book_title")%></li>
+      <li class="list_header_total"><%= t("refunds.header.total")%></li>
+      <li>&#160;</li>
+    </ul>
+    <div class="generated_list">
+      <% @refunded_items.each do |item| %>
+        <ul class="transactions_list">
+          <li class="date_purchased"><%= item['order_date'] %></li>
+          <li class="confirmation_number"><%= item['title'] %></li>
+          <li class="total"><%= localize_price(item['item_price'], item['currency']) %></li>
+          <li class="details_link"><%= link_to t("refunds.details"), item_details_path(item['sku']), :class => 'order_details_link'%></li>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</div>

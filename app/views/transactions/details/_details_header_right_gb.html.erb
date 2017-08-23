@@ -1,0 +1,5 @@
+    <div class='detail_label'><%= t("transactions.header.total_VAT")%>: <span><%= localize_price(@details.tax ,@details.currency) %></span></div>
+    <div class='detail_label total-label'><%= t("transactions.header.total")%>: <span><%=localize_price(@details.tax(true) ,@details.currency) %></span></div>
+    <div class="detail_label vat-included"><%= t("transactions.header.tax_vat")%></div>
+ 
+

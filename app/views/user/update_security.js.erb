@@ -1,0 +1,13 @@
+<% if !@error.blank? %>
+  $('#question_response-error').removeClass("hidden");
+  $('#question_response-error').html("<%= @error %>");
+  $('#question_response-error').focus();
+<% elsif @user.errors.any? %>
+  $('#question_response-error').removeClass("hidden");
+  $('#question_response-error').html("Unexpected Error");
+  $('#question_response-error').focus();
+<% else  %>
+  $('#question_response-error').addClass("hidden");
+  $('#question_response-error').html("");
+  close_modal('#user_security_modal');
+<% end %>

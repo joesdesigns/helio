@@ -1,0 +1,53 @@
+<div class="signin-container" role="main">
+	<div class="sign-in">
+	  <h1>
+		<span class="welcome-text"><%= t('login.welcome')%> </span>
+		<span class="welcome-text-small"></span>
+		<span class="vs-text"><%= design_branding[:welcome_name] %></span> 
+	  </h1>
+		<%= form_for :user, :url => login_path do |f| %>
+			<%= f.email_field :email, :placeholder => "Email", "aria-required" => true %>
+			<%= f.password_field :password, :placeholder => "Password", "aria-required" => true %>
+			<% unless params[:return].blank? -%>
+		  	<input type="hidden" name="return" value="<%= session_finish_path(return: params[:return], from: params[:from]) %>" />
+			<% end -%>
+			<%= recaptcha_tags %>
+			<div><%= f.submit 'Sign In', class: "submit" %></div>
+		<% end -%>
+	  <hr aria-hidden="true">
+	<%
+	  # <div class="new-account">New to Vitalsource?  <a href="http://beta.vitalsource.com/#/user/registration" class="primary">Create an account</a></div>
+	%>
+	</div>
+	
+	<!-- language dropdown -->
+	<div class="language-dropdown" id="language-dropdown">
+	  <button class="selected">
+		<span class="flag" style="background-image: url(/assets/flags/en.png)"></span>
+		<span style="outline: none;">English</span>
+	  </button>
+	
+		<div id="language-dropdown-menu" class="language-dropdown-menu hidden-menu">
+		  <div class="pointer down" style="right: 15px;"></div>
+		  	<div id="language-list">
+		  		<ul role="menu" class="context-menu-option-list">
+					<li class="context-menu-option">
+			  			<button data-item-id="0" data-attribute="en">
+							English
+			  			</button>
+					</li>
+					<li class="context-menu-option">
+			  			<button data-item-id="1" data-attribute="es">
+							Spanish
+			  			</button>
+					</li>
+					<li class="context-menu-option">
+			  			<button data-item-id="2" data-attribute="fr">
+			  				French
+			  			</button>
+					</li>
+		  		</ul>
+		  	</div>
+		</div>
+	</div>
+</div>

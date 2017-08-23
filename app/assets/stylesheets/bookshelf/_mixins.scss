@@ -1,0 +1,101 @@
+
+// Hides content, but will still be read by screen readers
+// http://webaim.org/techniques/css/invisiblecontent/
+@mixin visually-hidden() {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin breakpoint($point) {
+  @if $point == xlarge {
+
+    // 6 columns in library grid
+    @media screen and (min-width: 1201px) {
+      @content;
+    }
+  } @else if $point == large {
+
+    // 5 columns in library grid
+    @media screen and (max-width: 1200px) {
+      @content;
+    }
+  } @else if $point == medium {
+
+    // 4 columns in library grid
+    @media screen and (max-width: 980px) {
+      @content;
+    }
+  } @else if $point == mediumsmall {
+
+    // 3 columns in library grid
+    // This is 645px to match when reader panels go full screen
+    @media screen and (max-width: 750px) {
+      @content;
+    }
+  } @else if $point == small {
+
+    // 3 columns in library grid
+    // This is 645px to match when reader panels go full screen
+    // if this changes, update helpers.jsx isSmallScreen() function
+    @media screen and (max-width: 645px) {
+      @content;
+    }
+  } @else if $point == xsmall {
+
+    // 2 columns in library grid
+    @media screen and (max-width: 480px) {
+      @content;
+    }
+  }
+}
+
+// theme classes
+@mixin theme($type, $style: default, $ignoredefault: false) {
+  $themewhite: #FFFFFF;
+  $themeList: (
+    raspberry (default #d1237d, dark #be1f71, light #f474b7, lighter #f474b7, lightest #ffc8e5),
+    cheddar   (default $cheddar, dark $darkcheddar, light $lightcheddar, lighter $lightercheddar, lightest $lightestcheddar),
+    jungle    (default #168f5f, dark #148256, light #1fb581, lighter #1fb581, lightest #83e1bb),
+    royal     (default #6f619c, dark #655890, light #8e7dc7, lighter #8e7dc7, lightest #cec2f7),
+    ocean     (default #007fad, dark #00749e, light #00a7db, lighter #00a7db, lightest #86dffb)
+  );
+  @each $color, $colors in $themeList {
+    @if $ignoredefault and $color==cheddar {
+
+    } @else {
+      @each $curstyle, $hex in $colors {
+        @if $curstyle==$style {
+          [data-theme="#{$color}"] &, [data-theme="#{$color}"] & svg *, [data-theme="#{$color}"] & a {
+            #{$type}: #{$hex};
+          }
+        }
+      }
+    }
+  }
+}

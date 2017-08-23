@@ -1,0 +1,14 @@
+<div class="purchase-details">
+  <div class="details-left-container detail_date">
+    <% if @details.currency == "GBP" %>
+      <%= render :partial => "transactions/details/details_header_left_gb" %>
+    <% else %>
+      <%= render :partial => "transactions/details/details_header_left" %>
+    <% end %>
+  </div>
+  <div class="details-right-container">
+     <%= render :partial => "transactions/details/details_header_right_gb" if @details.currency == "GBP" %>
+     <%= render :partial => "transactions/details/details_header_right_au" if @details.currency == "AUD" %>
+     <%= render :partial => "transactions/details/details_header_right" if @details.currency == "USD" %>
+  </div>
+</div>

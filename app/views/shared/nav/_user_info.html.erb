@@ -1,0 +1,5 @@
+<li class="<%= active_name('user') %>">
+  <%= link_to(
+    raw("<div class='text userinfo-icon'><div class='page-name'>#{t("user.menu_title")}</div></div>"),current_user_path)
+  %>
+</li>

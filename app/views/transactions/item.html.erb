@@ -1,0 +1,53 @@
+<div class="content" id="wrapper">
+  <div id="orders">
+      <div class="purchases">
+        <% if @item.empty? %>
+          You have not made any purchases with Vitalsource. Shop eTextbooks at vitalsource.com. Save up to 60% compared to print
+        <% else %>
+            <div class="page-header">
+              <h1 class="form-header-heading">
+                  <%= link_to(
+                    raw("#{t("transactions.refund_item_title")}"),refunds_path)
+                  %>
+              </h1>
+              <div class="print-reciept">
+                <%= link_to  "Print Receipt",print_order_path(@item['number']), :target => "_blank",  :class => 'order_item_link'%>
+              </div>
+            </div>
+            <div class="purchase-item-container">
+               <%= render :partial => "transactions/item/header_common" %>
+              <div>
+                <div class="order-item">
+                  <div class="order-item-left">
+                    <div class="book-image-contianer">
+                      <%= image_tag(asset_path(@item["image_url"]) , :alt => "", :class => "book-image", height: "76", width: "76") %>
+                    </div>
+
+                    <div class="order-item-title">
+                      <div class="item-title"><%= @item["title"] %></div>
+                      <div class="item-author"><%= @item["author"] %></div>
+                      <div><%= edition_copyright(@item['edition'], @item['copyright'])%></div>
+                    </div>
+                    <div class="order-item-rental-item">
+                      <% if @item["duration"]=='perpetual' %>
+                        <div class="duration-text">Non-expiring</div>
+                      <% else %>
+                        <div class="duration-text"><%= @item["duration"] %> Access</div>
+                      <% end %>
+                      <div class="expires-text"></div>
+                    </div>
+                  </div>
+                  <div class="order-item-refund">
+                    <div class="refund-link-text">
+                      Price:  <span><%= localize_item_price(@item,@item["currency"]) %>
+                        <div class="vat-included"><% if @item["currency"] == "GBP" %><%= tax_postfix(@item["currency"]) %><% end %></div>
+                    </div>
+                </div>
+              </div>  
+            </div>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+<%= render :partial => "transactions/modals/not_refundable" %>

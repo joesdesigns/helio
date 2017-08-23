@@ -1,0 +1,32 @@
+<div class="main-menu menu-close-hidden" aria-hidden="true" style="margin-left: 0px;">
+  <div class="menu-close-icon">
+    <a href="#" id='close-moble-menu' title="close navigation menu"></a>
+  </div>
+  <div class="user-header">
+    <% if !current_user.sso_only? %>
+      <div class="user-full-name"><%= current_user["first_name"] %> <%= current_user["last_name"] %></div>
+      <div class="user-email-address"><%= current_user["email"] %></div>
+    <% end %>
+  </div>
+  <div class="divider"></div>
+  <nav role="navigation">
+    <ul>
+    <% if @branded_config[:nav][:user_info] %>
+      <%= render :partial => "shared/mobile_nav/user_info" %>
+    <% end %>
+
+    <% if @branded_config[:nav][:reader_settings] %>
+      <%= render :partial => "shared/mobile_nav/reader_settings" %>
+    <% end %>
+
+  <% if @branded_config[:nav][:resources] %>
+    <%= render :partial => "shared/mobile_nav/resources" %>
+  <% end %>
+
+  <% if @branded_config[:nav][:purchase_history] %>
+    <%= render :partial => "shared/mobile_nav/purchase_history" %>
+  <% end %>
+
+    </ul>
+  </nav>
+</div>

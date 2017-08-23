@@ -1,0 +1,58 @@
+<style>
+
+.content {
+  padding: 50px 50px 0 50px;
+}
+
+
+@media screen and (max-width: 900px) {
+  .content {
+    padding-left: 15px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .content {
+    padding: 0 5px !important;
+  }
+}
+@media screen and (max-width: 645px) {
+  .content {
+    /*padding-left: 0 !important;*/
+  }
+}
+@media screen and (max-width: 525px) {
+  .content {
+    /*padding-left: 0 !important;*/
+    width: 100%;
+  }
+}
+
+</style>
+
+  <% present @user do |user_presenter| %>
+    <div class="form-header">
+      <h1 class="form-header-heading main"><%=t('user.page_title')%></h1>
+    </div>
+
+    <% if @branded_config[:user][:personal_information] %>
+      <%= render(:partial => "user/form/personal_information", :locals => {:user_presenter =>user_presenter})%>
+    <% end %>
+
+    <% if @branded_config[:user][:security] %>
+      <%= render :partial => "user/form/security" %>
+      <%= render :partial => "user/modals/security" %>
+    <% end %>
+
+    <% if @branded_config[:user][:password] %>
+      <%= render :partial => "user/form/password" %>
+      <%= render :partial => "user/modals/password" %>
+    <% end %>
+
+    <% if @branded_config[:user][:notification_settings] %>
+      <%= render :partial => "user/form/notification_settings" %>
+    <% end %>
+
+    <% if @branded_config[:custom][:uop_email_locked] %>
+      <%= render :partial => "user/modals/locked_email" %>
+    <% end %>
+  <% end %>

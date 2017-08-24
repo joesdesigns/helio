@@ -1,34 +1,3 @@
-<style>
-
-.content {
-  padding: 50px 50px 0 50px;
-}
-
-
-@media screen and (max-width: 900px) {
-  .content {
-    padding-left: 15px;
-  }
-}
-@media screen and (max-width: 800px) {
-  .content {
-    padding: 0 5px !important;
-  }
-}
-@media screen and (max-width: 645px) {
-  .content {
-    /*padding-left: 0 !important;*/
-  }
-}
-@media screen and (max-width: 525px) {
-  .content {
-    /*padding-left: 0 !important;*/
-    width: 100%;
-  }
-}
-
-</style>
-
   <% present @user do |user_presenter| %>
     <div class="form-header">
       <h1 class="form-header-heading main"><%=t('user.page_title')%></h1>

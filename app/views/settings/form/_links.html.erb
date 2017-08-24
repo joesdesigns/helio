@@ -22,12 +22,9 @@
     <%= radio_button_tag '[user][bookshelf_preference]', 'Online', 'checked = true'%>
     <%= label_tag "bookshelf_preference_online", t('devices.links.options.online'),  id: 'online', class: 'small_label' %>
   </div>
-
-
 <% end %>
-
   <div class="field-algn">
-    	<%= submit_tag t('buttons.save'), :type => "submit" %>
-    </div>
-    <% end %>
+    <%= submit_tag t('buttons.save'), :type => "submit" %>
+  </div>
+  <% end %>
 </section>

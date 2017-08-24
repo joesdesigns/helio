@@ -1,7 +1,6 @@
 <section id="content-box1">
   <h2 class="head-instructions"><%= t('devices.manage.title') %></h2>
   <div class="instructions"><%= t(design_branding[:devices_sub_title_key], desktop: @owner['max_desktop_activations'], mobile: @owner['max_mobile_activations'])%></div>
-
   <% if @devices.count > 0 %>
   <table class="device-table">
     <tr>
